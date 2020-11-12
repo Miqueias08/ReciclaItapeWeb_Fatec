@@ -25,7 +25,7 @@ class LoginController extends Controller
 	            $user = User::find($id->id);
 	            Auth::login($user);
 	            if(Auth::user()){
-	                return redirect("dahboard");
+	                return redirect("dashboard");
 	            }
 	            else{
 	                $data = ["status"=>"erro","mensagem"=>"Falha no Login!"];
