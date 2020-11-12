@@ -12,7 +12,4 @@ class SiteController extends Controller
     	$markers = Makers_Model::all();
     	return view("site.reciclar",['markers' => $markers]);
     }
-    public function obterPontos(){
-    	
-    }
 }

@@ -21,5 +21,9 @@ class DatabaseSeeder extends Seeder
             'plastico'=>true,
             'vidro'=>true,
         ]);
+        DB::table('usuarios')->insert([
+            'email' => 'miqueiasfernando@gmail.com',
+            'senha' => Hash::make('123')
+        ]);
     }
 }
