@@ -10950,6 +10950,7 @@ a:focus {
 
 .topbar {
   height: 4.375rem;
+  background-color: #018786;
 }
 
 .topbar #sidebarToggleTop {
