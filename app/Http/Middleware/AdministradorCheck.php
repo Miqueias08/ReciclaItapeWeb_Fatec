@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Auth;
 
-class CheckLogin
+class AdministradorCheck
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,8 @@ class CheckLogin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check()){
-            return redirect("dashboard");
+        if(!Auth::check()){
+            return redirect("admin/login");
         }
         return $next($request);
     }

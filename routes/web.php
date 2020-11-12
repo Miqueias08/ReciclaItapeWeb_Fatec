@@ -9,6 +9,10 @@ Route::namespace("Site")->group(function(){
 	/*Rotas Proibidas sem Autenticação*/
 	Route::middleware([checkLogin::class])->group(function () {
 		route::get("admin/login","LoginController@index");
+	});
+	Route::middleware([AdministradorCheck::class])->group(function () {
 		route::get("dashboard","AdminController@dashboard");
+		route::get("admin/pontos","AdminController@pontos");
+		route::get("sair","AdminController@sair");
 	});
 });
