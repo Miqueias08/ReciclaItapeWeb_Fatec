@@ -21,9 +21,17 @@ class DatabaseSeeder extends Seeder
             'plastico'=>true,
             'vidro'=>true,
         ]);
-        DB::table('usuarios')->insert([
+         DB::table('usuarios')->insert([
             'email' => 'miqueiasfernando@gmail.com',
-            'senha' => Hash::make('123')
+            'senha' => Hash::make('123'),
+        ]);
+        DB::table('usuarios')->insert([
+            'email' => 'alex.almeida3@fatecitapetininga.edu.br',
+            'senha' => Hash::make('123'),
+        ]);
+         DB::table('usuarios')->insert([
+            'email' => 'gilson.santos3@fatecitapetininga.edu.br',
+            'senha' => Hash::make('123'),
         ]);
     }
 }
