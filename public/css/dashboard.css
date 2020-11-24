@@ -26,7 +26,11 @@
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
 }
-
+.icons{
+  cursor: pointer;
+  margin: 10px;
+  font-size: 30px;
+}
 *,
 *::before,
 *::after {
@@ -81,6 +85,10 @@ abbr[data-original-title] {
   border-bottom: 0;
   -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
+}
+.menu-usuario li a{
+  color: white;
+  cursor: pointer;
 }
 address {
   margin-bottom: 1rem;

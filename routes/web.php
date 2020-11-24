@@ -14,5 +14,9 @@ Route::namespace("Site")->group(function(){
 		route::get("dashboard","AdminController@dashboard");
 		route::get("admin/pontos","AdminController@pontos");
 		route::get("sair","AdminController@sair");
+		route::get("novo/ponto","AdminController@novoPonto");
+		route::post("novo/ponto","AdminController@cadastroPonto");
+		route::get("editar/ponto/{id}","AdminController@editar");
+		route::get("deletar/ponto/{id}","AdminController@deletar");
 	});
 });

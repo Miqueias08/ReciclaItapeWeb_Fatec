@@ -6,3 +6,14 @@ html, body {
     margin: 0;
     padding: 0;
 }
+.navbar{
+	background-color: #32CD32;]
+	color: white;
+}
+.navbar-brand,.navbar-brand:hover{
+	color: white;
+	font-weight: bold;
+}
+.navbar-expand-lg .navbar-nav .nav-link{
+	color: white;
+}
