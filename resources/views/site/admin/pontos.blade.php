@@ -5,24 +5,8 @@
 @endpush
 <div class="container-fluid" id="dados" style="height: 100%;">
     <link rel="stylesheet" type="text/css" href="css/pontos.css">
-    <div class="modal fade show" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Novo Ponto</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-              <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-    </div>
-</div>
 <!-- --------------------------------------------------------------- -->
 <div class="container-fluid dados">
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Pontos</h1>
-        <!--  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Reportar Erro</a> -->
-    </div>
     <div class="row" id="conteudo">
        <div class="table-wrapper">
         <div class="table-title">
@@ -62,9 +46,9 @@
                     @endif
                 </td>
                 <td>
-                    <a class="edit icons pagina" id="editar/ponto/{{$dado->id}}" title="Editar" data-toggle="modal" data-target="#modalExemplo"><i class="fas fa-edit"></i></a>
-                    <a class="delete icons" id="deletar/ponto/{{$dado->id}}" title="Deletar" data-toggle="tooltip"><i class="fas fa-trash"></i></a>
-                    <a class="adicionar icons" id="{{$dado->id}}" title="Adicionar" data-toggle="modal" data-target="#modalExemplo"><i class="fas fa-plus-circle"></i></a>
+                    <a class="edit icons pagina" href="editar/ponto/{{$dado->id}}" title="Editar" data-toggle="modal" data-target="#modalExemplo"><i class="fas fa-edit"></i></a>
+                    <a class="delete icons" href="deletar/ponto/{{$dado->id}}" title="Deletar" data-toggle="tooltip"><i class="fas fa-trash"></i></a>
+                    <a class="adicionar icons" id="{{$dado->id}}" title="Adicionar" data-toggle="modal" href="/novo/ponto" data-target="#modalExemplo"><i class="fas fa-plus-circle"></i></a>
                 </td>
             </tr>
             @endforeach
