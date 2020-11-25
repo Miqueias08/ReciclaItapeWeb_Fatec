@@ -21,7 +21,7 @@
     <ul class="navbar-nav sidebar " id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/" style="height:100px;">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/" target="_blank" style="height:100px;">
         <img src="/img/logo.png" style="width: 100%;margin: 50px;"> 
       </a>
 
