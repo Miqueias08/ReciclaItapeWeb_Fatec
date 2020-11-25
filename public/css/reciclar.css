@@ -9,6 +9,7 @@ html, body {
 .navbar{
 	background-color: #32CD32;]
 	color: white;
+	font-size: 19px;
 }
 .navbar-brand,.navbar-brand:hover{
 	color: white;
