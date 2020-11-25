@@ -28,15 +28,15 @@ class LoginController extends Controller
 	                return redirect("dashboard");
 	            }
 	            else{
-	                $data = ["status"=>"erro","mensagem"=>"Falha no Login!"];
+	            	return redirect()->back()->with('ERRO', 'Falha no login');
 	            }
 	        }
 	        else{
-	            $data = ["status"=>"erro","mensagem"=>"Usuário ou senha não encontrado!"];
+	        	return redirect()->back()->with('ERRO', 'Usuario e senha não encontrado!');
 	        }     
 	    }
 	    else{
-	        $data = ["status"=>"erro","mensagem"=>"Senha em branco!"];   
+	        return redirect()->back()->with('ERRO', 'Senha invalida');   
 	    }	
     }
 }

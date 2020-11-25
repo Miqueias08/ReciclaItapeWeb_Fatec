@@ -3,6 +3,11 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('/img/login_fundo.jpg');">
 			<div class="wrap-login100">
+				@if(session()->has('ERRO'))
+		            <div class="alert alert-danger">
+		                {{ session()->get('ERRO') }}
+		            </div>
+		        @endif
 				<form class="login100-form validate-form" action="/admin/login" method="post">
 					 @csrf
 					<span class="login100-form-logo" style="background-image: url('/img/logo.png');background-size: cover;background-position: center;">
@@ -15,12 +20,11 @@
 
 					<div class="wrap-input100 validate-input" data-validate = "Entre com o Email">
 						<input class="input100" type="email" name="email" value="miqueiasfernando@gmail.com" placeholder="Email">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+	
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Entre com a Senha">
 						<input class="input100" type="password" value="123" name="senha" placeholder="Senha">
-						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
 					<div class="contact100-form-checkbox">
