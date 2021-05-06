@@ -16,7 +16,8 @@
           <a class="nav-link" href="/">Reciclar <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/admin/login">Administrador</a>
+          <a class="nav-link" href="/admin/login">Administrador
+</a>
         </li>
       </ul>
     </div>
@@ -31,7 +32,7 @@
 
 
   <div id="map"></div>
-
+  
 
 
   @push('scriptsFooter')
@@ -54,28 +55,24 @@
         @if(isset($cooperativas))
           @foreach($cooperativas as $marker)
             var info{{ $marker->id_cooperativa }} = new google.maps.InfoWindow({
-              content: "<h2>{{ $marker->razao_social }}</h2>"
-              +"<h5>Endereço</h5> {{ $marker->endereco }}<br>"
-              +"<h5>O ponto coleta os seguintes tipos de lixo</h5> <br>"
-             /* @if($marker->papel)
-              +"<span class=\"glyphicon glyphicon-file\"></span><strong> Papel</strong> "
-              @endif
-              @if($marker->plastico)
-              +"<span class=\"glyphicon glyphicon-cd\"></span><strong> Plastico</strong> "
-              @endif
-              @if($marker->vidro)
-              +"<span class=\"glyphicon glyphicon-glass\"></span><strong> Vidro</strong>"
-              @endif*/
+              content: 
+                "<h2>{{ $marker->razao_social }}</h2>"
+                +"<h5>Endereço</h5> {{ $marker->endereco }}<br>"
+                +"<h5>O ponto coleta os seguintes tipos de lixo</h5> <br>"
+              });
+              var marker{{ $marker->id_cooperativa }} = new 
+              google.maps.Marker({
+                position: {
+                  lat: {{ $marker->lat }}, 
+                  lng: {{ $marker->lng }}
+                },
+                map: 
+                  map,
+                  title: "{{ $marker->razao_social }}"
+              });
+              marker{{ $marker->id_cooperativa }}.addListener('click', function(){
+                info{{ $marker->id_cooperativa }}.open(map,marker{{ $marker->id_cooperativa }})
             });
-            var marker{{ $marker->id_cooperativa }} = new google.maps.Marker({
-              position: {lat: {{ $marker->lat }}, lng: {{ $marker->lng }} },
-              map: map,
-              title: "{{ $marker->razao_social }}"
-            });
-            marker{{ $marker->id_cooperativa }}.addListener('click', function(){
-              info{{ $marker->id_cooperativa }}.open(map,marker{{ $marker->id_cooperativa }})
-            });
-
             marker{{ $marker->id_cooperativa }}.setMap(map);
           @endforeach
         @endif
@@ -99,7 +96,7 @@
     </script>
 
     <script defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw8jpw8F00TCDpJR9moG02PG3Ge_s3K1I&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key={{config('app.api_maps')}}&callback=initMap">
   </script>
   @endpush
 @endsection
