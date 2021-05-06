@@ -1,0 +1,48 @@
+.panel-primary{
+	width: 100%;
+}
+.list-group-item{
+	cursor: pointer;
+}
+.list-group-item:hover{
+	background-color: #ededed;
+}
+#conteudo{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.card-form{
+	background-color: white;
+	width: 50%;
+	height: auto;
+	padding: 20px;
+	margin-bottom: 20px;
+
+}
+.title-pedido{
+	font-size: 1.5em;
+}
+.card-form input,.card-form textarea{
+	width: 400px;
+}
+.admin-form{
+	color: black;
+}
+.esconde{
+	display: none;
+	color: black;
+}
+.admin-form button{
+	margin:10px;
+}
+.erros{
+	background-color: #FF4500;
+	border-color: #FF4500;
+	color: white;
+	display: none;
+}
+.erros span{
+	font-size: 1.1em;
+}
