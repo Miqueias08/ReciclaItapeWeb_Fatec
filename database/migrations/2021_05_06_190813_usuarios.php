@@ -14,9 +14,9 @@ class Usuarios extends Migration
     public function up()
     {
         Schema::create('usuarios', function (Blueprint $table) {
-           $table->id();
+           $table->bigIncrements('id_usuario');
            $table->string('nome', 60);
-           $table->string('email', 80);
+           $table->string('email', 90);
            $table->float('senha');
         });
     }

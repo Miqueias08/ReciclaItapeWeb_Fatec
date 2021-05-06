@@ -13,7 +13,13 @@ class EntregaUsuario extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('entregas_usuarios', function (Blueprint $table) {
+           $table->bigIncrements('id_entrega_usuario');
+           $table->float('peso',10,2);
+           $table->string('tipo_material');
+           $table->unsignedBigInteger('usuario_id');
+           $table->foreign('usuario_id')->references('id_usuario')->on('usuarios');
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ class EntregaUsuario extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('entregas_usuarios');
     }
 }

@@ -51,10 +51,10 @@
           zoom: 14
         });
 
-        @if(isset($pontos))
-          @foreach($pontos as $marker)
-            var info{{ $marker->id }} = new google.maps.InfoWindow({
-              content: "<h2>{{ $marker->nome }}</h2>"
+        @if(isset($cooperativas))
+          @foreach($cooperativas as $marker)
+            var info{{ $marker->id_cooperativa }} = new google.maps.InfoWindow({
+              content: "<h2>{{ $marker->razao_social }}</h2>"
               +"<h5>Endereço</h5> {{ $marker->endereco }}<br>"
               +"<h5>O ponto coleta os seguintes tipos de lixo</h5> <br>"
              /* @if($marker->papel)
@@ -67,16 +67,16 @@
               +"<span class=\"glyphicon glyphicon-glass\"></span><strong> Vidro</strong>"
               @endif*/
             });
-            var marker{{ $marker->id }} = new google.maps.Marker({
+            var marker{{ $marker->id_cooperativa }} = new google.maps.Marker({
               position: {lat: {{ $marker->lat }}, lng: {{ $marker->lng }} },
               map: map,
-              title: "{{ $marker->name }}"
+              title: "{{ $marker->razao_social }}"
             });
-            marker{{ $marker->id }}.addListener('click', function(){
-              info{{ $marker->id }}.open(map,marker{{ $marker->id }})
+            marker{{ $marker->id_cooperativa }}.addListener('click', function(){
+              info{{ $marker->id_cooperativa }}.open(map,marker{{ $marker->id_cooperativa }})
             });
 
-            marker{{ $marker->id }}.setMap(map);
+            marker{{ $marker->id_cooperativa }}.setMap(map);
           @endforeach
         @endif
       }
