@@ -106,7 +106,7 @@
       }
     </script>
     <script defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ6LLAlmsOTz6xn2ZxnrQ_6qDxU7jArp4&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw8jpw8F00TCDpJR9moG02PG3Ge_s3K1I&callback=initMap">
   </script>
   @endpush
 @endsection
