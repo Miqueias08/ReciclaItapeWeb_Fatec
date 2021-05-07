@@ -1,19 +1,24 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Site\AdminController;
-use App\Http\Controllers\Site\LoginController;
-use App\Http\Controllers\Site\siteController;
+use App\Http\Controllers\Site\Administrador\AdminController;
+use App\Http\Controllers\Site\Administrador\LoginControllerAdmin;
+use App\Http\Controllers\Site\Site\SiteController;
 
 Route::namespace("Site")->group(function(){
-	Route::get('/', [siteController::class, 'index']);
-	Route::get('obter/pontos', [siteController::class, 'obterPontos']);
-	Route::post('admin/login', [LoginController::class, 'efetuarLogin']);
+	Route::get('/', [SiteController::class, 'index']);
+	Route::get('obter/pontos', [SiteController::class, 'obterPontos']);
 	
-	/*Rotas Proibidas sem Autenticação*/
-	Route::middleware([checkLogin::class])->group(function () {
-		Route::get('admin/login', [LoginController::class, 'index']);
-	});
+	
+	/*ADMINISTRADOR*/
+
+	/*AUTENTICACAO*/
+	Route::get('administrador/login', [LoginControllerAdmin::class, 'index'])->middleware("CheckLogin");
+
+	/*PROCESSA AUTENTICACAO*/
+	Route::post('administrador/login', [LoginControllerAdmin::class, 'efetuarLogin']);
+
+	/*ROTAS PROIBIDAS SEM AUTENTICACAO*/
 	Route::middleware([AdministradorCheck::class])->group(function () {
 		Route::get('dashboard', [AdminController::class, 'dashboard']);
 		Route::get('admin/pontos', [AdminController::class, 'pontos']);
@@ -23,6 +28,7 @@ Route::namespace("Site")->group(function(){
 		Route::get('editar/ponto/{id}', [AdminController::class, 'editar']);
 		Route::get('deletar/ponto/{id}', [AdminController::class, 'deletar']);
 	});
+	/*/////////////////////////////////////////////////////////////////////*/
 });
 
 
