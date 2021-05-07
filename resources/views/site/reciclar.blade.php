@@ -49,7 +49,10 @@
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: new google.maps.LatLng(-23.589115,-48.048801),
-          zoom: 14
+          zoom: 14,
+          options:{
+            gestureHandling: 'greedy'
+          }
         });
 
         @if(isset($cooperativas))
