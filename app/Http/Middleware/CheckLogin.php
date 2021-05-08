@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Route;
+use Auth;
 class CheckLogin
 {
     /**
@@ -20,8 +21,10 @@ class CheckLogin
         $rota = request()->route()->uri; 
         switch ($rota) {
             case 'administrador/login':
-                file_put_contents(__DIR__.'/teste1.txt',json_encode($rota));  
-                break;
+                if(Auth::guard("admin")->user()){
+                    return redirect("/administrador/cooperativas");
+                }  
+            break;
         }
 
         return $next($request);

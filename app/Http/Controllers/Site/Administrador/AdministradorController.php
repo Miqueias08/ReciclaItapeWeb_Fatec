@@ -5,17 +5,63 @@ namespace App\Http\Controllers\Site\Administrador;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
-use App\Models\Makers_Model;
+use App\Models\cooperativas;
 
 class AdministradorController extends Controller
 {
-      public function dashboard(){
-         $pontos = Makers_Model::all();
-    	return view("site.admin.pontos",compact('pontos'));
+    public function cooperativas(){
+        $cooperativas = cooperativas::all();
+    	return view("site.administrador.buscas.cooperativas",compact('cooperativas'));
     }
+    public function cadastro_cooperativas(){
+        return view("site.administrador.cadastros.cadastro-cooperativa");
+    }
+    public function processa_cadastro_cooperativas(Request $request){
+        $validated = $request->validate([
+
+            'razao_social'=>'required|max:90',
+      
+            'tipo_documento'=>'required|max:40',
+
+            'cnpj'=>'max:19',
+
+            'cpf'=>'max:14',
+
+            'endereco'=>'required|max:100',
+
+            'lat'=>'required',
+
+            'lng'=>'required',
+
+            'descricao'=>'max:150',
+
+            'status'=>'required',
+
+        ]);
+        try {
+            cooperativas::insert($request->except("_token"));
+            return redirect()->back()->withSuccess('Cooperativa Cadastrada!');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+            return redirect()->back()->withInput()->withErrors('Falha no Cadastro!');
+        }
+    }
+    public function processa_atualiza_cooperativas(Request $request){
+
+    }
+
+
+
+
+
+
+
+
+
+
     public function sair(){
     	 Auth::logout();
-    	 return redirect("admin/login");
+    	 return redirect("administrador/login");
     }
     public function deletar($id){
         if(Makers_Model::destroy($id)){
@@ -26,7 +72,7 @@ class AdministradorController extends Controller
         }
     }
     public function novoPonto(){
-        return view("site.admin.novo-ponto");
+        return view("site.administrador.novo-ponto");
     }
     public function cadastroPonto(Request $request){
         try {
@@ -57,6 +103,6 @@ class AdministradorController extends Controller
     }
     public function editar($id){
         $ponto = Makers_Model::find($id)->get();
-        return view("site.admin.novo-ponto",compact('ponto'));
+        return view("site.administrador.novo-ponto",compact('ponto'));
     }
 }

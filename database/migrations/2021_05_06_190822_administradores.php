@@ -17,7 +17,7 @@ class Administradores extends Migration
            $table->bigIncrements('id_administrador');
            $table->string('nome', 60);
            $table->string('email', 80);
-           $table->float('senha');
+           $table->string('senha');
         });
     }
 

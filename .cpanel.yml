@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/mfernando/public_html/reciclaitape.miqueiasfernando.work
+    - /bin/cp -R * $DEPLOYPATH
