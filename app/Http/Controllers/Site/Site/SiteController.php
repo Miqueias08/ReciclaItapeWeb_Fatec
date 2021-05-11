@@ -10,6 +10,12 @@ class SiteController extends Controller
 {
     public function index(){
     	$cooperativas = cooperativas::all();
-    	return view("site.reciclar",['cooperativas' => $cooperativas]);
+    	return view("site.site.reciclar",['cooperativas' => $cooperativas,'titulo'=>"Pontos de Coleta"]);
+    }
+    public function cooperativas(){
+    	return view("site.site.cooperativas",['cooperativas' => cooperativas::all(),'titulo'=>"Cooperativas"]);
+    }
+    public function login_cadastro(){
+    	return view("site.site.login_cadastro",['titulo'=>"Login / Cadastro"]);
     }
 }

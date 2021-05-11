@@ -1,0 +1,204 @@
+*:focus{
+  outline: none;
+}
+*{
+  list-style: none;
+  list-style-type: none;
+}
+html, body {
+  height: 100%;
+}
+.ErrorsDiv{
+  height: 70px;
+}
+/*updateSenhaUser*/
+.ContentPassUp{
+  height: auto;
+  min-height: 100%;
+  margin-top: 50px;
+}
+.boxChangePass{
+  height: 210px;
+  border-radius: 5px;
+  border:1px solid #DEDEDE;
+  background-color: white;
+}
+.boxChangePass h1{
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.inputsUserUp input{
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  font-size: 1.1em;
+}
+
+/*Errors*/
+.Content404{
+  background-image: url("../img/errors/404/not-found.jpg");
+  background-size: 100% 100%;
+  height: 800px;
+}
+.ResetPass{
+  color: white;
+}
+.ResetPass span{
+  color: white;
+}
+.ResetPassButton button{
+  background-color: #008000;
+  border-color: #008000;
+}
+.ResetPassButton button:hover{
+  background-color: #008000;
+  border-color: #008000;
+}
+/*Cores*/
+.green{
+  color: green;
+}
+
+.blue{
+  color: #1FDCA6;
+}
+/*Navbar*/
+.navbar-green{
+  background-color: #008000;
+  border-radius: 0px;
+  color: white;
+  border: none;
+  margin-bottom: 0px;
+}
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-brand:visited,
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus
+{
+  color: white;
+}
+/*Propriedades Fontes navbar*/
+.navbar-default .navbar-nav > li > a{
+  font-size: 1.1em;
+  font-family: Arial;
+}
+.open>.dropdown-menu{
+  margin: 0px;
+  color: white;
+}
+/*Botão*/
+.btn-green { 
+  color: #ffffff; 
+  background-color: #016301;
+  border-radius: 0px; 
+}
+
+/*Cores Botao*/
+.btn-blue-outline{
+  color: white;
+  background-color: #1FDCA6;
+  border-radius: 0px;
+  border: 1px solid #1FDCA6;
+  transition: 0.3s;
+  } .btn-blue-outline:hover{
+    background-color: #1FDCA6;
+    color: white;
+    transition: 0.3s;
+    outline: none;
+  }
+
+
+  .btn-green:hover, 
+  .btn-green:focus, 
+  .btn-green:active, 
+  .btn-green.active, 
+  .open .dropdown-toggle.btn-green { 
+    color: #ffffff; 
+    background-color: #243D2A; 
+  }
+
+  .btn-blue { 
+    color: #FFFFFF; 
+    background-color: #1FDCA6; 
+  } 
+
+  .btn-blue:hover, 
+  .btn-blue:focus, 
+  .btn-blue:active, 
+  .btn-blue.active, 
+  .open .dropdown-toggle.btn-blue { 
+    color: white;
+    background-color: #1FDCA6;
+  }  
+  /*background botao dropdown*/
+  .dropdown-menu>li>a,
+  .open>.dropdown-menu,
+  .open>.dropdown-menu,
+  .dropdown-menu>li>a:hover
+  {
+    color: white;
+    background-color: #1FDCA6;
+    border:0px;
+  }
+  .dropdown ul{
+    display: none;
+  }
+
+/********************************/
+/*       Custom Buttons         */
+/********************************/
+
+.btn.btn-lg {padding: 10px 40px;}
+.btn.btn-hero,
+.btn.btn-hero:hover,
+.btn.btn-hero:focus {
+  color: #f5f5f5;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
+  outline: none;
+  margin: 20px auto;
+  cursor: pointer;
+}
+  #box-geral{
+    height: 100%;display: flex;align-items: center;justify-content: center;
+  }
+
+/********************************/
+/*  Input de registro e login   */
+/********************************/
+input[type]{
+  border-radius: 0px;
+}
+
+input[type]:focus{
+  border:2px solid green;
+  box-shadow: none;
+}
+
+.cadastro{
+  border: 1px solid rgba(0,128,0,0.7);
+  border-radius: 5px;
+  padding: 20px;
+  background-color: white;
+}
+
+#cad-bg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index:0;
+}
+@media (max-width: 575.98px) {
+  #box-geral{
+    display: block;
+  }
+}
+
+

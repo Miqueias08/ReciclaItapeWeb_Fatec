@@ -7,8 +7,14 @@ use App\Http\Controllers\Site\Site\SiteController;
 
 Route::namespace("Site")->group(function(){
 	Route::get('/', [SiteController::class, 'index']);
+	Route::get('cooperativas', [SiteController::class, 'cooperativas']);
+	Route::get('login/cadastro', [SiteController::class, 'login_cadastro']);
 	Route::get('obter/pontos', [SiteController::class, 'obterPontos']);
 	
+
+
+
+
 	
 	/*ADMINISTRADOR*/
 
