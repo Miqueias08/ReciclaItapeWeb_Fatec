@@ -4,38 +4,26 @@
   <link rel="stylesheet" type="text/css" href="css/minha-conta.css">
 @endpush
   <div class="container"> 
-    <h1>Histórico de Entregas</h1>
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Peso(KG)</th>
-          <th scope="col">Tipo de Material</th>
-          <th scope="col">Cooperativa</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>0,20</td>
-          <td>Papel</td>
-          <td>Cooperita</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>0,10</td>
-          <td>Vidro</td>
-          <td>Cooperita</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>0,01</td>
-          <td>Vidro</td>
-          <td>Cooperita</td>
-        </tr>
-      </tbody>
-    </table>
+   	<div class="col-md-9 InformMain">
+		<div class="row">
+			<div class="IformTitle">
+				<h2>MEUS DADOS</h2>
+			</div>
+			<div class="col-md-12 formUserUpda">
+				@if(session()->has('message'))
+	    		<div class="alert alert-success">
+	        		{{ session()->get('message') }}
+	   			 </div>
+				@endif
 
+				<label>Email:<span>{{Auth::guard('usuario')->user()->email}}</span></label><br>
+
+				<label>Nome:<span>{{Auth::guard('usuario')->user()->nome}}</span><p><a href="{{url('/minha_conta/name/update')}}">Modificar</a></p></label><br>
+
+				<label>Senha:<span>***********</span><p><a href="{{url('/minha_conta/senha/update')}}">Modificar</a></p></label>
+			</div>
+		</div>
+	</div>
   </div>
 @endsection
 
