@@ -53,7 +53,6 @@ nav{
 	position: absolute;
 	height: 100%;
 	margin: 0;
-	padding: 0;	
 }
 @media (max-width: 575.98px) {
 	.orientacoes .row .container{

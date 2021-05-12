@@ -1,7 +1,7 @@
 @extends('site.templates.usuario')
 @section('conteudo-user')
 @push('scriptsHead')
-  <link rel="stylesheet" type="text/css" href="css/home_user.css">
+  <link rel="stylesheet" type="text/css" href="css/minha-conta.css">
 @endpush
   <div class="container"> 
     <h1>Histórico de Entregas</h1>

@@ -23,6 +23,7 @@ Route::namespace("Site")->group(function(){
 
 	Route::middleware([AuthUserCheck::class])->group(function () {
 		Route::get('/home', [UsuarioController::class, 'home_usuario']);
+		Route::get('/minha-conta', [UsuarioController::class, 'minha_conta']);
 		Route::get('/usuario/sair', [UsuarioController::class, 'usuario_sair']);
 	});
 

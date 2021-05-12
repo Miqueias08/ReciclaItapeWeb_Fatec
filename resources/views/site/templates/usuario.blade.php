@@ -3,36 +3,32 @@
   @push('scriptsHead')
   <link rel="stylesheet" type="text/css" href="css/usuario.css">
   @endpush
-   
-    
-    <div class="sidebarUser col-md-2 col-md-offset-1">
-      <div class="col-md-12 userButtons">
-        <h2>STATUS DA SUA CONTA</h2>
-        <dl class="pontosUser"><br>
-          <dt>Atualmente você tem:</dt>
-          <dd><span>80</span><br>
-          Pontos Disponíveis.</dd>
-        </dl>
-        <!-- Botoes conta -->
-        <nav class="menu-user-btn">
-          <ul>
-            <li>
-              <a href="/vouchers">
-                VOUCHERS ATIVOS
-              </a>
-            </li>
-            <li>
-              <a href="/minha_conta">
-                MINHA CONTA
-              </a>
-            </li>
-            <li><a href="/meus-vouchers">MEUS VOUCHERS</a></li>
-          </ul>
-        </nav>
-      </div>
-    
-
   
+    <div class="row">
+      <div class="col-md-2 usuario-box navbar-user">
+        <div class="pontuacao-user">
+          <ul>
+            <li class="status-conta">STATUS DA SUA CONTA</li>
+            <li class="pontuacao-user-number">
+              <dl class="pontosUser">
+                <dt>Atualmente você tem:</dt>
+                <dd><span class="score-user">80 KG</span><br>
+                De Entrega de Lixo.</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+        <div class="links-user">
+          <ul>
+            <li><a href="/home">HISTÓRICO DE ENTREGAS</a></li>
+            <li><a href="/minha-conta">MINHA CONTA</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-10 usuario-box conteudo">
+         @yield("conteudo-user")
+      </div>
+    </div>
   @push('scriptsFooter')
 
   @endpush
