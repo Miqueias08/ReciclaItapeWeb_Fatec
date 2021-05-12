@@ -10,9 +10,9 @@
     <p class="lead">Ainda não tem um cadastro ?</p>
     <h1 class="green">Cadastre-se</h1>
 
-    @if ($errors->cadastro->first('name'))
+    @if ($errors->cadastro->first('nome'))
     <span class="help-block">
-      <strong>{{ $errors->cadastro->first('name')}}</strong>
+      <strong>{{ $errors->cadastro->first('nome')}}</strong>
     </span>
     @endif
 
@@ -22,33 +22,40 @@
     </span>
     @endif
 
-    @if ($errors->cadastro->first('password'))
+    @if ($errors->cadastro->first('senha'))
     <span class="help-block">
-      <strong>{{ $errors->cadastro->first('password')}}</strong>
+      <strong>{{ $errors->cadastro->first('senha')}}</strong>
     </span>
     @endif
 
-    @if ($errors->cadastro->first('Senha_Confirme'))
+    @if ($errors->cadastro->first('confirma_senha'))
     <span class="help-block">
-      <strong>{{ $errors->cadastro->first('Senha_Confirme')}}</strong>
+      <strong>{{ $errors->cadastro->first('confirma_senha')}}</strong>
     </span>
     @endif
-
-    <form method="POST" action="">
+    @if(session('status_cadastro'))
+        <div class="alert alert-success">
+          <ul> 
+            <li>{{session('status_cadastro')}}</li>
+          </ul>
+        </div>
+    @endif
+  
+    <form method="POST" action="/cadastro/usuario">
 
       {!!csrf_field()!!}
       <label for="nome">Nome</label>
-      <input id="nome" type="text" name="Nome" class="form-control"  value="{{old('Nome')}}" placeholder="Digite seu nome completo" required="required"><br>
+      <input id="nome" type="text" autocomplete="nome" name="nome" class="form-control"  value="{{old('nome')}}" placeholder="Digite seu nome completo" required="required"><br>
 
       <label for="email">E-mail</label>
-      <input id="email" type="email" name="Email" class="form-control"  value="{{old('Email')}}" placeholder="Digite seu e-mail" required="required"><br>
+      <input id="email" type="email" autocomplete="nome" name="email" class="form-control"  value="{{old('email')}}" placeholder="Digite seu e-mail" required="required"><br>
 
       <label for="senha">Senha</label>
-      <input id="senha" type="password" name="Senha" class="form-control" placeholder="Ao menos 8 digitos" value="{{old('Senha')}}" required="required">
+      <input id="senha" type="password" autocomplete="nome" name="senha" class="form-control" placeholder="Ao menos 8 digitos" value="{{old('senha')}}" required="required">
       <br>
 
       <label for="senha2">Confirme a senha</label>
-      <input id="senha2" type="password" class="form-control" placeholder="Digite novamente sua senha" name="Senha_Confirme" value="{{old('Senha_Confirme')}}" required="required"><br>
+      <input id="senha2" type="password" autocomplete="nome" class="form-control" placeholder="Digite novamente sua senha" name="confirma senha" value="{{old('confirmar_senha')}}" required="required"><br>
 
       <button class="btn btn-green">Cadastrar</button>
     </form>
@@ -58,7 +65,7 @@
   <div class="cadastro col-md-5 col-md-offset-2">
     <p class="lead">Caso já tenha uma conta,</p>
     <h1 class="blue">Entre Agora</h1>
-    <form  method="POST" action="">
+    <form  method="POST" action="/login/usuario">
 
       {!!csrf_field()!!}
       @if ($errors->LoginErrors->first('email'))
@@ -67,9 +74,9 @@
       </span>
       @endif
 
-      @if ($errors->LoginErrors->first('password'))
+      @if ($errors->LoginErrors->first('senha'))
       <span class="help-block">
-        <strong>{{ $errors->LoginErrors->first('password')}}</strong>
+        <strong>{{ $errors->LoginErrors->first('senha')}}</strong>
       </span>
       @endif
       @if($errors->any())
@@ -77,12 +84,17 @@
         <strong>{{$errors->first()}}</strong>
       </span>
       @endif
+      @if(session()->has('ERRO'))
+        <div class="alert alert-danger">
+          {{ session()->get('ERRO') }}
+        </div>
+      @endif
       <label for="nome">E-mail</label>
-      <input id="nome" type="email" name="email" class="form-control"  placeholder="Digite seu email" value="{{old('email')}}" required="required">
+      <input id="nome" type="email" name="email" class="form-control"  placeholder="Digite seu email" value="{{old('email')}}">
       <br>
-      <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+      <div class="form-group{{ $errors->has('senha') ? ' has-error' : '' }}">
         <label for="senha">Senha</label>
-        <input id="senha" type="password" name="password" class="form-control" placeholder="Digite sua senha" value="{{old('password')}}" required="required">
+        <input id="senha" type="password" name="senha" class="form-control" placeholder="Digite sua senha" value="{{old('senha')}}">
         <br>
 
         <a href="{{ url('recuperar/senha') }}">Esqueci a minha senha</a>

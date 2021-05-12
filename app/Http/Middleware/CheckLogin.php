@@ -25,6 +25,11 @@ class CheckLogin
                     return redirect("/administrador/cooperativas");
                 }  
             break;
+            case 'login/cadastro':
+                if(Auth::guard("usuario")->user()){
+                    return redirect("/home");
+                }  
+            break;
         }
 
         return $next($request);

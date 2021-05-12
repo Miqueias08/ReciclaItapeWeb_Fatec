@@ -4,13 +4,27 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Site\Administrador\AdministradorController;
 use App\Http\Controllers\Site\Administrador\LoginControllerAdmin;
 use App\Http\Controllers\Site\Site\SiteController;
+use App\Http\Controllers\Site\Usuario\UsuarioController;
+use App\Http\Controllers\Site\Usuario\LoginUsuarioController;
 
 Route::namespace("Site")->group(function(){
 	Route::get('/', [SiteController::class, 'index']);
 	Route::get('cooperativas', [SiteController::class, 'cooperativas']);
-	Route::get('login/cadastro', [SiteController::class, 'login_cadastro']);
 	Route::get('obter/pontos', [SiteController::class, 'obterPontos']);
 	
+
+
+
+
+	/*USUARIO*/
+	Route::get('login/cadastro', [LoginUsuarioController::class, 'login_cadastro'])->middleware("CheckLogin");
+	Route::post('/cadastro/usuario', [LoginUsuarioController::class, 'cadastro_usuario']);
+	Route::post('/login/usuario', [LoginUsuarioController::class, 'login_usuario']);
+
+	Route::middleware([AuthUserCheck::class])->group(function () {
+		Route::get('/home', [UsuarioController::class, 'home_usuario']);
+		Route::get('/usuario/sair', [UsuarioController::class, 'usuario_sair']);
+	});
 
 
 

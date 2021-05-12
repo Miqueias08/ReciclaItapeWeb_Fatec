@@ -35,9 +35,21 @@
               <li class="nav-item">
                   <a href="/ranking" class="nav-link">Ranking</a>
               </li>
-               <li class="nav-item">
-                  <a href="/login/cadastro" class="nav-link">Login - Cadastro</a>
-              </li>
+              <!-- USUARIO -->
+              @if(Auth::guard('usuario')->user())
+                 <li class="nav-item dropdown">
+                   <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button type="button" class="btn btn-success"><i class="fas fa-user"></i> {{Str::limit(Auth::guard('usuario')->user()->nome,15,'....')}}<i class="fas fa-caret-down"></i></button></a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/home">Minha Conta</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/usuario/sair">Sair</a>
+                  </div>
+                </li>
+              @else
+                <li class="nav-item">
+                  <a href="/login/cadastro" class="nav-link"><i class="fas fa-user"></i> Login - Cadastro</a>
+                </li>
+              @endif
                 <li class="nav-item" id="instagram-icon">
                   <a href="" target="_blank" class="nav-link">
                       <i class="fab fa-instagram"></i>
@@ -60,7 +72,10 @@
   <div class="container-fluid" id="dados">
           @yield('principal')
   </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
