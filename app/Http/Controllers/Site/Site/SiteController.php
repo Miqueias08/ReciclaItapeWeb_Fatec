@@ -15,4 +15,7 @@ class SiteController extends Controller
     public function cooperativas(){
     	return view("site.site.cooperativas",['cooperativas' => cooperativas::all(),'titulo'=>"Cooperativas"]);
     }
+    public function ranking(){
+    	return view("site.site.ranking",['titulo'=>"Ranking"]);
+    }
 }
