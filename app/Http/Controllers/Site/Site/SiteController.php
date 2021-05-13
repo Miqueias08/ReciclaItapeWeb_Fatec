@@ -18,4 +18,8 @@ class SiteController extends Controller
     public function ranking(){
     	return view("site.site.ranking",['titulo'=>"Ranking"]);
     }
+    public function tutoriais(){
+    	$tutoriais=null;
+    	return view("site.site.tutoriais",['titulo'=>"Tutoriais","tutoriais"=>$tutoriais]);
+    }
 }
