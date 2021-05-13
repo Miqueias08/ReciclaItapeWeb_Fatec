@@ -1,7 +1,7 @@
 @extends('site.templates.principal')
 @section('principal')
   @push('scriptsHead')
-    <link rel="stylesheet" type="text/css" href="css/cooperativas.css">
+    <link rel="stylesheet" type="text/css" href="/css/cooperativas.css">
   @endpush
     <div class="container">
       <div class="row"> 
