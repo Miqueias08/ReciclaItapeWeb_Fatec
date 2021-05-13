@@ -48,20 +48,8 @@ class AdministradorController extends Controller
             $request['lng']=$lng;
 
             /*IMAGEM*/
-            $name=null;
-            if($request->hasfile('imagem'))
-            {
-                $imagem=$request->file('imagem');
-
-                $hora = time()+date("Ymd");
-
-                $name = $hora.'.'.$imagem->extension();
-
-                $imagem->move(public_path().'/cooperativas/', $name);  
- 
-           }
            $requestData = $request->except("_token");
-           $requestData['imagem'] = $name;
+           $requestData['imagem'] = Upload_Imagem_Cooperativa($request);
 
             cooperativas::insert($requestData);
             return redirect()->back()->withSuccess('Cooperativa Cadastrada!');
@@ -91,9 +79,8 @@ class AdministradorController extends Controller
             $cooperativa->descricao = $request->input("descricao");
             $cooperativa->status = $request->input("status");
             if($request->input("atualizar-imagem")=="on"){
-                return "atualizaa";
+                 $cooperativa->imagem = Upload_Imagem_Cooperativa($request);
             }
-            return $request->all();
             $cooperativa->save();
             return redirect()->back()->with('COOPERATIVA_ATUALIZADA', 'Cooperativa Atualizada!'); 
         } catch (\Exception $e) {
@@ -108,13 +95,6 @@ class AdministradorController extends Controller
              return redirect()->back()->with('COOPERATIVA_DELETADA_FALHA', 'Falha!'); 
         }
     }
-
-
-
-
-
-
-
 
 
     public function sair(){

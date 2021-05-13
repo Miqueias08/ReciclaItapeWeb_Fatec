@@ -33,13 +33,13 @@
         <label for="exampleFormControlInput1">Imagem</label>
          @if(ISSET($dados))
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="atualizar-imagem" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" name="atualizar-imagem" id="atualizar-img">
                 <label class="form-check-label" for="flexCheckChecked">
                     Atualizar Imagem
                 </label>
             </div>
         @endif
-        <input type="file" class="form-control" name="imagem" placeholder="Imagens" accept="image/png, image/jpeg,image/jpg" multiple="off" value="">
+        <input type="file" @if(isset($dados)) style="display: none;" @endif class="form-control" name="imagem" placeholder="Imagens" accept="image/png, image/jpeg,image/jpg" multiple="off" id="input-img" value="">
         <div class="imagens-ordem">
           @if(ISSET($dados))
             <img src="/cooperativas/{{$dados->imagem}}" width="200px">
@@ -139,6 +139,16 @@
 </script>
 <script type="text/javascript" href="/js/jquery.js"></script>
 <script type="text/javascript">
+    $("#atualizar-img").click(function(){
+        if($('#atualizar-img').is(":checked")==true){
+            $("#input-img").show();
+        }
+        else{
+           $("#input-img").hide();
+ 
+        }
+    });
+    
     $('body').on('change','#tipo-documento', function() {
         val = this.value;
         switch(val){
