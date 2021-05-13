@@ -3,7 +3,11 @@
   @push('scriptsHead')
     <link rel="stylesheet" type="text/css" href="css/reciclar.css">
   @endpush
-  
+  <style type="text/css">
+    #dados{
+      padding: 0;
+    }
+  </style>
 
   <div id="map" style="width:100%;height:100%;">
     

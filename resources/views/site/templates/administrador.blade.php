@@ -3,7 +3,7 @@
   @push('scriptsHead')
   <link rel="stylesheet" type="text/css" href="/css/administrador.css">
   @endpush
-  
+  @stack('scripts_head')
     <div class="row">
       <div class="col-md-2 usuario-box navbar-user">
         <div class="pontuacao-user">
@@ -30,6 +30,6 @@
       </div>
     </div>
   @push('scriptsFooter')
-
+    @stack('scripts_footer')
   @endpush
 @endsection

@@ -50,8 +50,27 @@ class AdministradorController extends Controller
         Auth::guard('admin')->logout();
         return redirect("/");
     }
-    public function processa_atualiza_cooperativas(Request $request){
-
+    public function atualizar_cooperativa($id){
+        $cooperativa = cooperativas::find($id);
+        return view("site.administrador.cadastros.cadastro-cooperativa",["dados"=>$cooperativa]);
+    }
+    public function atualizar_cooperativa_processa(Request $request,$id){
+        try {
+            $cooperativa = cooperativas::find($id);
+            $cooperativa->razao_social = $request->input("razao_social");
+            $cooperativa->tipo_documento = $request->input("tipo_documento");
+            $cooperativa->cnpj = $request->input("cnpj");
+            $cooperativa->cpf = $request->input("cpf");
+            $cooperativa->endereco = $request->input("endereco");
+            $cooperativa->lat = $request->input("lat");
+            $cooperativa->lng = $request->input("lng");
+            $cooperativa->descricao = $request->input("descricao");
+            $cooperativa->status = $request->input("status");
+            $cooperativa->save();
+            return redirect()->back();
+        } catch (\Exception $e) {
+            return redirect()->back();
+        }
     }
 
 
@@ -67,46 +86,5 @@ class AdministradorController extends Controller
     	 Auth::logout();
     	 return redirect("administrador/login");
     }
-    public function deletar($id){
-        if(Makers_Model::destroy($id)){
-            return redirect()->back();
-        }
-        else{
-           return redirect()->back();
-        }
-    }
-    public function novoPonto(){
-        return view("site.administrador.novo-ponto");
-    }
-    public function cadastroPonto(Request $request){
-        try {
-            $dados = $request->all();
-            if(isset($dados["id"])){
-                unset($dados["_token"]);
-                if(Makers_Model::find($dados["id"])->update($dados)){
-                    return redirect()->back()->with('SUCESSO', 'Ponto Atualizado');
-                }
-            }
-            else{
-                unset($dados["_token"]);
-                unset($dados["id"]);
-                $dados['papel']=="on"?$dados['papel']=1:$dados['papel']=0;
-                $dados['plastico']=="on"?$dados['plastico']=1:$dados['plastico']=0;
-                $dados['vidro']=="on"?$dados['vidro']=1:$dados['vidro']=0;
-                Makers_Model::insert($dados);
-                return redirect()->back()->with('SUCESSO', 'Ponto Cadastrado');
-            }
-        } catch (\Exception $e) {
-             if(isset($dados["id"])){
-                return redirect()->back()->withInput()->with('ERRO','Erro ao cadastrar o ponto!');
-            }
-            else{
-                return redirect()->back()->withInput()->with('ERRO','Erro ao atualizar o ponto!');
-            }
-        }
-    }
-    public function editar($id){
-        $ponto = Makers_Model::find($id)->get();
-        return view("site.administrador.novo-ponto",compact('ponto'));
-    }
+   
 }

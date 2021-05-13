@@ -47,6 +47,8 @@ Route::namespace("Site")->group(function(){
 	Route::middleware([AuthAdminCheck::class])->group(function () {
 		Route::get('administrador/cooperativas', [AdministradorController::class, 'cooperativas']);
 		Route::get('/administrador/cadastro/cooperativas', [AdministradorController::class, 'cadastro_cooperativas']);
+		Route::get('/administrador/atualizar/cooperativa/{id}', [AdministradorController::class, 'atualizar_cooperativa']);
+		Route::post('/administrador/atualizar/cooperativa/{id}', [AdministradorController::class, 'atualizar_cooperativa_processa']);
 		Route::post('/administrador/cadastro/cooperativas', [AdministradorController::class, 'processa_cadastro_cooperativas']);
 		Route::post('/administrador/atualizar/cooperativas', [AdministradorController::class, 'processa_atualiza_cooperativas']);
 
