@@ -1,10 +1,9 @@
-
-@extends("site.templates.dashboard")
+@extends("site.templates.administrador")
 @push("head_scripts")
-    <link rel="stylesheet" type="text/css" href="/css/administrador.css">
+    
 @endpush
-@section("conteudo")
-    <h1 class="page-title">@if(isset($rifa)) Atualizar Cooperativa #{{$rifa->id}} @else Cadastro de Cooperativa @endif</h1>
+@section("conteudo-admin")
+  <h1 class="page-title">@if(isset($rifa)) Atualizar Cooperativa #{{$rifa->id}} @else Cadastro de Cooperativa @endif</h1>
     @if ($errors->any())
         <div class="alert alert-danger">
           <ul>
@@ -99,6 +98,21 @@
         </div><br>
       <button type="submit" class="btn btn-success">@if(isset($cooperativa)) Atualizar @else Cadastro @endif</button>
     </form>
+    <style type="text/css">
+        .cooperativaCpf{
+        display: none;
+        }
+        .cooperativaCnpj{
+          display: none;
+        }
+        @media (max-width: 575.98px) {
+        .usuario-box{
+          height: auto;
+          margin: 0;
+          padding: 0;
+        }
+        }
+    </style>
 @endsection
 @push('footer_scripts')
 <link rel="stylesheet" href="/css/jquery-confirm.min.css">
@@ -130,5 +144,3 @@
     });
 </script>
 @endpush
-
-

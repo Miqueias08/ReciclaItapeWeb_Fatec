@@ -51,6 +51,16 @@
                   <a href="/login/cadastro" class="nav-link"><i class="fas fa-user"></i> Login - Cadastro</a>
                 </li>
               @endif
+              @if(Auth::guard('admin')->user())
+                 <li class="nav-item dropdown">
+                   <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button type="button" class="btn btn-success"><i class="fas fa-user-shield"></i> {{Str::limit(Auth::guard('admin')->user()->nome,15,'....')}}<i class="fas fa-caret-down"></i></button></a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/administrador/cooperativas">Cooperativas</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/administrador/sair">Sair</a>
+                  </div>
+                </li>
+              @endif
                 <li class="nav-item" id="instagram-icon">
                   <a href="" target="_blank" class="nav-link">
                       <i class="fab fa-instagram"></i>

@@ -1,63 +1,53 @@
-@extends('site.templates.html')
-@section('bootstrap')
-
-	<div class="limiter">
-		<div class="container-login100" style="background-image: url('/img/login_fundo.jpg');">
-			<div class="wrap-login100">
-				@if(session()->has('ERRO'))
-		            <div class="alert alert-danger">
-		                {{ session()->get('ERRO') }}
-		            </div>
-		        @endif
-				<form class="login100-form validate-form" action="/administrador/login" method="post">
-					 @csrf
-					<a href="/"><span class="login100-form-logo" style="background-image: url('/img/logo.png');background-size: cover;background-position: center;">
-				
-					</span></a>
-
-					<span class="login100-form-title p-b-34 p-t-27">
-						Log in
-					</span>
-
-					<div class="wrap-input100 validate-input" data-validate = "Entre com o Email">
-						<input class="input100" type="email" name="email" placeholder="Email">
-	
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Entre com a Senha">
-						<input class="input100" type="password" name="senha" placeholder="Senha">
-					</div>
-
-					<div class="contact100-form-checkbox">
-						<!-- <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-						<label class="label-checkbox100" for="ckb1">
-							Remember me
-						</label> -->
-					</div>
-
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
-					</div><br>
-					<div class="container-login100-form-btn">
-						<a href="/"><button type="button" class="login100-form-btn">
-							Sair
-						</button></a>
-					</div>
-					
-					<div class="text-center p-t-90">
-						
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	
-
-	<div id="dropDownSelect1"></div>
-	
-@endsection
+@extends('site.templates.principal')
+@section('principal')
 @push('scriptsHead')
-	<link rel="stylesheet" type="text/css" href="/css/login.css">
+<link rel="stylesheet" type="text/css" href="/css/login_cadastro.css">
 @endpush
+<div class="container" id="box-geral">
+<img id="cad-bg" src="/img/login-registro.jpg" alt="Background">
+<div class="row" style="justify-content:center; width: 1050px;">
+
+  <div class="cadastro col-md-5 col-md-offset-2">
+    <p class="lead">Área Restrita</p>
+    <h1 class="blue">Entre Agora</h1>
+    <form  method="POST" action="/administrador/login">
+
+      {!!csrf_field()!!}
+      @if ($errors->LoginErrors->first('email'))
+      <span class="help-block">
+        <strong>{{ $errors->LoginErrors->first('email')}}</strong>
+      </span>
+      @endif
+
+      @if ($errors->LoginErrors->first('senha'))
+      <span class="help-block">
+        <strong>{{ $errors->LoginErrors->first('senha')}}</strong>
+      </span>
+      @endif
+      @if($errors->any())
+      <span class="help-block">
+        <strong>{{$errors->first()}}</strong>
+      </span>
+      @endif
+      @if(session()->has('ERRO'))
+        <div class="alert alert-danger">
+          {{ session()->get('ERRO') }}
+        </div>
+      @endif
+      <label for="nome">E-mail</label>
+      <input id="nome" type="email" name="email" class="form-control"  placeholder="Digite seu email" value="{{old('email')}}">
+      <br>
+      <div class="form-group{{ $errors->has('senha') ? ' has-error' : '' }}">
+        <label for="senha">Senha</label>
+        <input id="senha" type="password" name="senha" class="form-control" placeholder="Digite sua senha" value="{{old('senha')}}">
+        <br>
+        <br>
+        <button class="btn btn-green pull-right">Entrar</button>
+      </form>
+    </div>
+  </div>
+    @push('scriptsFooter')
+
+    @endpush
+    @endsection
+    

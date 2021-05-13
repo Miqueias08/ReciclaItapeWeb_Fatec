@@ -1,8 +1,8 @@
-@extends("site.templates.dashboard")
+@extends("site.templates.administrador")
 @push("head_scripts")
 
 @endpush
-@section("conteudo")
+@section("conteudo-admin")
 <h1 class="page-title">Listagem das Cooperativas</h1>
 
 <div class="container-fluid listar-pontos">

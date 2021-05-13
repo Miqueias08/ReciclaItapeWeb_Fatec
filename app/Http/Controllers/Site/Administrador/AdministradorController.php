@@ -46,6 +46,10 @@ class AdministradorController extends Controller
             return redirect()->back()->withInput()->withErrors('Falha no Cadastro!');
         }
     }
+    public function admin_sair(){
+        Auth::guard('admin')->logout();
+        return redirect("/");
+    }
     public function processa_atualiza_cooperativas(Request $request){
 
     }
