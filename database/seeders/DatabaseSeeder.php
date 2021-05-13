@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
 
         cooperativas::insert([
             "razao_social"=>"Cooperita",
+            "imagem"=>"teste.jpg",
             "tipo_documento"=>"PJ",
             "cnpj"=>"07.962.851/0007-50",
             "cpf"=>"",

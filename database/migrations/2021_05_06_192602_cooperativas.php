@@ -16,6 +16,7 @@ class Cooperativas extends Migration
         Schema::create('cooperativas', function (Blueprint $table) {
            $table->bigIncrements('id_cooperativa');
            $table->string('razao_social',90);
+           $table->string('imagem',100);
            $table->string('tipo_documento', 40);
            $table->string('cnpj', 19)->nullable();
            $table->string('cpf',14)->nullable();

@@ -20,6 +20,8 @@ class AdministradorController extends Controller
         $validated = $request->validate([
 
             'razao_social'=>'required|max:90',
+
+            'imagem'=>'required',
       
             'tipo_documento'=>'required|max:40',
 
@@ -39,7 +41,29 @@ class AdministradorController extends Controller
 
         ]);
         try {
-            cooperativas::insert($request->except("_token"));
+            $lat = number_format($request['lat'],6);
+            $lng = number_format($request['lng'],6);
+
+            $request['lat']=$lat;
+            $request['lng']=$lng;
+
+            /*IMAGEM*/
+            $name=null;
+            if($request->hasfile('imagem'))
+            {
+                $imagem=$request->file('imagem');
+
+                $hora = time()+date("Ymd");
+
+                $name = $hora.'.'.$imagem->extension();
+
+                $imagem->move(public_path().'/cooperativas/', $name);  
+ 
+           }
+           $requestData = $request->except("_token");
+           $requestData['imagem'] = $name;
+
+            cooperativas::insert($requestData);
             return redirect()->back()->withSuccess('Cooperativa Cadastrada!');
         } catch (\Exception $e) {
             return $e->getMessage();
@@ -66,13 +90,24 @@ class AdministradorController extends Controller
             $cooperativa->lng = $request->input("lng");
             $cooperativa->descricao = $request->input("descricao");
             $cooperativa->status = $request->input("status");
+            if($request->input("atualizar-imagem")=="on"){
+                return "atualizaa";
+            }
+            return $request->all();
             $cooperativa->save();
-            return redirect()->back();
+            return redirect()->back()->with('COOPERATIVA_ATUALIZADA', 'Cooperativa Atualizada!'); 
         } catch (\Exception $e) {
-            return redirect()->back();
+            return redirect()->back()->with('COOPERATIVA_FALHA', 'Cooperativa Atualizada!'); 
         }
     }
-
+    public function excluir_cooperativa($id){
+        try {
+            cooperativas::find($id)->delete();
+            return redirect()->back()->with('COOPERATIVA_DELETADA', 'Cooperativa Deletada!'); 
+        } catch (\Exception $e) {
+             return redirect()->back()->with('COOPERATIVA_DELETADA_FALHA', 'Falha!'); 
+        }
+    }
 
 
 

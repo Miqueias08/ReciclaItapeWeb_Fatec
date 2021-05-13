@@ -30,6 +30,22 @@
         value="{{ old('razao_social') }}"
         @endif>
 
+        <label for="exampleFormControlInput1">Imagem</label>
+         @if(ISSET($dados))
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="atualizar-imagem" id="flexCheckChecked">
+                <label class="form-check-label" for="flexCheckChecked">
+                    Atualizar Imagem
+                </label>
+            </div>
+        @endif
+        <input type="file" class="form-control" name="imagem" placeholder="Imagens" accept="image/png, image/jpeg,image/jpg" multiple="off" value="">
+        <div class="imagens-ordem">
+          @if(ISSET($dados))
+            <img src="/cooperativas/{{$dados->imagem}}" width="200px">
+          @endif
+        </div>
+
         <div class="form-group">
             <label for="exampleFormControlSelect1">Tipo de Documento</label>
             <select class="form-control" name="tipo_documento" id="tipo-documento">
@@ -69,7 +85,7 @@
         value="{{$dados->lat}}"
         @else
         value="{{ old('lat') }}"
-        @endif>
+        @endif  step="0.01" min="-1000000000000000000000" max="1000000000000000000000">
 
         <label for="exampleFormControlInput1">Longitude</label>
         <input type="number" class="form-control" name="lng" placeholder="Longitude" 
@@ -77,7 +93,7 @@
         value="{{$dados->lng}}"
         @else
         value="{{ old('lng') }}"
-        @endif>
+        @endif step="0.01" min="-1000000000000000000000" max="1000000000000000000000">
 
         <label for="exampleFormControlInput1">Descrição</label>
         <input type="text" class="form-control" name="descricao" placeholder="Descrição" 
@@ -162,6 +178,35 @@
                 $(".cooperativaCnpj").hide();
                 break;
          }
-    </script>        
+    </script>   
+  @if(session('COOPERATIVA_ATUALIZADA'))
+        <script type="text/javascript">
+         $.confirm({
+                title: 'Dados Atualizados',
+                content: 'Informações atualizadas com sucesso',
+                type: 'green',
+                typeAnimated: true,
+                buttons: {
+                    voltar: function () {
+                        location.href = "/administrador/cooperativas";
+                }
+            }
+          });
+        </script>
+    @endif
+    @if(session('COOPERATIVA_FALHA'))
+        <script type="text/javascript">
+            $.confirm({
+                title: 'Falha',
+                content: 'Ocorreu alguma falha!',
+                type: 'red',
+                typeAnimated: true,
+                buttons: {
+                    fechar: function () {
+                }
+            }
+          });
+        </script>
+    @endif     
 @endif
 @endpush

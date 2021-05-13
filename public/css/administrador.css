@@ -69,6 +69,8 @@ body,html{
 }
 .conteudo{
   padding: 20px;
+  max-width: 100%;
+  overflow: auto;
 }
 @media (max-width: 575.98px) {
 .usuario-box{

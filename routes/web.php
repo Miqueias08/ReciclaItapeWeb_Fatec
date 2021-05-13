@@ -51,6 +51,7 @@ Route::namespace("Site")->group(function(){
 		Route::post('/administrador/atualizar/cooperativa/{id}', [AdministradorController::class, 'atualizar_cooperativa_processa']);
 		Route::post('/administrador/cadastro/cooperativas', [AdministradorController::class, 'processa_cadastro_cooperativas']);
 		Route::post('/administrador/atualizar/cooperativas', [AdministradorController::class, 'processa_atualiza_cooperativas']);
+		Route::get('/administrador/excluir/cooperativa/{id}', [AdministradorController::class, 'excluir_cooperativa']);
 
 		Route::get('/administrador/sair', [AdministradorController::class, 'admin_sair']);
 		Route::get('admin/pontos', [AdministradorController::class, 'pontos']);

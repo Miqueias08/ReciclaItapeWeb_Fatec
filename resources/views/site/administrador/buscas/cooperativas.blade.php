@@ -6,7 +6,7 @@
 <h1 class="page-title">Listagem das Cooperativas</h1>
 
 <div class="container-fluid listar-pontos">
-    <table id="mytable" class="table table-bordred table-striped" style="text-align: center;">
+    <table id="mytable" class="table table-bordred table-striped" style="text-align: center;width: auto;overflow-x: auto;">
         <thead>
             <th>id_cooperativa</th>
             <th>razao_social</th>
@@ -18,6 +18,8 @@
             <th>longitude</th>
             <th>descrição</th>
             <th>status</th>
+            <th>editar</th>
+            <th>excluir</th>
         </thead>
         <tbody>
            @forelse($cooperativas as $coope)
@@ -38,6 +40,9 @@
                         Atividado
                     @endif
                 </td>
+                <td><a href="/administrador/atualizar/cooperativa/{{$coope->id_cooperativa}}" id="editar"><p data-placement="Atualizar" title="Atualizar"><button class="btn btn-success btn-xs" data-title="Atualizar"><span class="glyphicon glyphicon-pencil">Atualizar</span></button></p></a></td>
+                 <td><a href="/administrador/excluir/cooperativa/{{$coope->id_cooperativa}}" id="excluir"><p data-placement="Excluir" title="Excluir"><button class="btn btn-danger btn-xs" data-title="Excluir"><span class="glyphicon glyphicon-pencil">Excluir</span></button></p></a></td>
+
             </tr>
 
            @empty
@@ -50,4 +55,33 @@
 @push('footer_scripts')
 <link rel="stylesheet" href="/css/jquery-confirm.min.css">
 <script src="/js/jquery-confirm.min.js"></script>
+@if(session('COOPERATIVA_DELETADA'))
+        <script type="text/javascript">
+         $.confirm({
+                title: 'Sucesso',
+                content: 'A Cooperativa foi Deletada',
+                type: 'green',
+                typeAnimated: true,
+                buttons: {
+                    voltar: function () {
+        
+                }
+            }
+          });
+        </script>
+    @endif
+    @if(session('COOPERATIVA_DELETADA_FALHA'))
+        <script type="text/javascript">
+            $.confirm({
+                title: 'Falha',
+                content: 'Ocorreu alguma falha!',
+                type: 'red',
+                typeAnimated: true,
+                buttons: {
+                    fechar: function () {
+                }
+            }
+          });
+        </script>
+    @endif     
 @endpush
