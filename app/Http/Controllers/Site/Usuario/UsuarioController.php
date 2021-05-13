@@ -13,7 +13,7 @@ class UsuarioController extends Controller
     }
     public function usuario_sair(){
     	Auth::guard('usuario')->logout();
-    	return redirect()->back();
+    	return redirect("/login/cadastro");
     }
     public function minha_conta(){
     	return view("site.usuario.minha-conta",['titulo'=>"Minha Conta"]);

@@ -2,6 +2,7 @@
 @section('principal')
 @push('scriptsHead')
 <link rel="stylesheet" type="text/css" href="/css/login_cadastro.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 @endpush
 <div class="container" id="box-geral">
 <img id="cad-bg" src="/img/login-registro.jpg" alt="Background">
@@ -97,15 +98,91 @@
         <input id="senha" type="password" name="senha" class="form-control" placeholder="Digite sua senha" value="{{old('senha')}}">
         <br>
 
-        <a href="{{ url('recuperar/senha') }}">Esqueci a minha senha</a>
+        <button type="button" class="esqueci-senha" data-toggle="modal" data-target="#esqueci-senha">
+        Esqueci a minha senha
+        </button>
         <br>
         <br>
         <button class="btn btn-green pull-right">Entrar</button>
       </form>
     </div>
   </div>
-    @push('scriptsFooter')
+  <!-- RECUPERAR SENHA -->
+<div class="modal fade" id="esqueci-senha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Esqueceu a Senha?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      
 
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="text-center">
+                  <h3><i class="fa fa-lock fa-4x"></i></h3>
+                  <h2 class="text-center">Esqueçeu a Sua Senha?</h2>
+                  <p>Você pode resetar aqui.</p>
+                  <div class="panel-body">
+    
+                    <form id="register-form" role="form" autocomplete="off" action="/recuperar/senha" class="form" method="post">
+                      {!!csrf_field()!!}
+                      <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                          <input id="email" required="required" name="email" placeholder="endereco de email" class="form-control"  type="email">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Resetar Senha" type="submit">
+                      </div>
+                      
+                      <input type="hidden" class="hide" name="token" id="token" value=""> 
+                    </form>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+    @push('scriptsFooter')
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+      @if(session('EMAIL_ENVIADO'))
+        <script type="text/javascript">
+            $.confirm({
+              title: 'Redefinição de Senha',
+              content: 'Um email com a nova senha foi enviado',
+              type: 'green',
+              typeAnimated: true,
+              buttons: {
+                  fechar: function () {
+                  }
+              }
+          });
+        </script>
+      @endif
+      @if(session('FALHA_EMAIL'))
+        <script type="text/javascript">
+            $.confirm({
+              title: 'Redefinição de Senha',
+              content: 'Ocorreu alguma falha!',
+              type: 'red',
+              typeAnimated: true,
+              buttons: {
+                  fechar: function () {
+                  }
+              }
+          });
+        </script>
+      @endif
     @endpush
     @endsection
     

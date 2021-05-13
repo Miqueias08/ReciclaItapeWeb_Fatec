@@ -13,6 +13,8 @@ Route::namespace("Site")->group(function(){
 	Route::get('obter/pontos', [SiteController::class, 'obterPontos']);
 	Route::get('ranking', [SiteController::class, 'ranking']);
 	Route::get('tutoriais', [SiteController::class, 'tutoriais']);
+	Route::post('recuperar/senha', [SiteController::class, 'recuperar_senha']);
+
 	
 
 

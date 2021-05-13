@@ -200,5 +200,9 @@ input[type]:focus{
     display: block;
   }
 }
-
-
+.esqueci-senha,.esqueci-senha:focus{
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}

@@ -17,6 +17,8 @@ return [
 
     'api_maps' => env('API_MAPS', ''),
 
+    'MAIL_USERNAME' => env('MAIL_USERNAME', ''),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
