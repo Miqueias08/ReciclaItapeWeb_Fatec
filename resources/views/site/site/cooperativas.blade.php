@@ -15,7 +15,7 @@
 
                 <span>{{$dt->razao_social}}</span>
 
-                <img src="">
+                <img src="/img-cooperativas/{{$dt->imagem}}" style="object-fit: cover;">
 
               </div>
 

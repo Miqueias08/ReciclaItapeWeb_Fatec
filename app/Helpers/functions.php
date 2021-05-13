@@ -13,7 +13,7 @@ use Telegram\Bot\Laravel\Facades\Telegram;
 
 	            $name = $hora.'.'.$imagem->extension();
 
-	            $imagem->move(public_path().'/cooperativas/', $name);  
+	            $imagem->move(public_path().'/img-cooperativas/', $name);  
 	 
 	           return $name;
 			} catch (\Exception $e) {
