@@ -17,6 +17,9 @@ class Cooperativas extends Migration
            $table->bigIncrements('id_cooperativa');
            $table->string('razao_social',90);
            $table->string('imagem',100);
+           $table->string('email', 80)->unique();
+           $table->string('senha');
+           $table->string('telefone',30)->nullable();
            $table->string('tipo_documento', 40);
            $table->string('cnpj', 19)->nullable();
            $table->string('cpf',14)->nullable();

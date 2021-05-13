@@ -30,6 +30,30 @@
         value="{{ old('razao_social') }}"
         @endif>
 
+        <label for="exampleFormControlInput1">Email</label>
+        <input type="email" class="form-control" name="email" placeholder="Email" 
+        @if(isset($dados)) 
+        value="{{$dados->email}}"
+        @else
+        value="{{ old('email') }}"
+        @endif>
+
+         <label for="exampleFormControlInput1">Senha</label>
+        <input type="password" class="form-control" name="senha" placeholder="Senha" 
+        @if(isset($dados)) 
+        value="{{$dados->senha}}"
+        @else
+        value="{{ old('senha') }}"
+        @endif>
+
+         <label for="exampleFormControlInput1">Telefone</label>
+        <input type="tel" class="form-control" name="telefone" placeholder="Telefone" 
+        @if(isset($dados)) 
+        value="{{$dados->telefone}}"
+        @else
+        value="{{ old('telefone') }}"
+        @endif>
+
         <label for="exampleFormControlInput1">Imagem</label>
          @if(ISSET($dados))
             <div class="form-check">

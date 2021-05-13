@@ -14,6 +14,9 @@ class cooperativas extends Model
     protected $fillable = [
         'id_cooperativa',
         'razao_social',
+        'email',
+        'senha',
+        'telefone',
         'tipo_documento',
         'cnpj',
         'cpf',

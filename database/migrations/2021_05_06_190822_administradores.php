@@ -16,7 +16,7 @@ class Administradores extends Migration
         Schema::create('administradores', function (Blueprint $table) {
            $table->bigIncrements('id_administrador');
            $table->string('nome', 60);
-           $table->string('email', 80);
+           $table->string('email', 80)->unique();
            $table->string('senha');
         });
     }

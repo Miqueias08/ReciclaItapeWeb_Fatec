@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\cooperativas;
+use Illuminate\Support\Facades\Hash;
 
 class AdministradorController extends Controller
 {
@@ -20,6 +21,12 @@ class AdministradorController extends Controller
         $validated = $request->validate([
 
             'razao_social'=>'required|max:90',
+
+            'email'=>'required|unique:cooperativas',
+
+            'senha'=>'required|max:20',
+
+            'telefone'=>'required|max:30',
 
             'imagem'=>'required',
       
@@ -46,6 +53,7 @@ class AdministradorController extends Controller
 
             $request['lat']=$lat;
             $request['lng']=$lng;
+            $request['senha']=Hash::make($request['senha']);
 
             /*IMAGEM*/
            $requestData = $request->except("_token");
@@ -76,6 +84,9 @@ class AdministradorController extends Controller
             $cooperativa->endereco = $request->input("endereco");
             $cooperativa->lat = $request->input("lat");
             $cooperativa->lng = $request->input("lng");
+            $cooperativa->email = $request->input("email");
+            $cooperativa->senha = Hash::make($request->input("senha"));
+            $cooperativa->telefone = $request->input("telefone");
             $cooperativa->descricao = $request->input("descricao");
             $cooperativa->status = $request->input("status");
             if($request->input("atualizar-imagem")=="on"){

@@ -26,6 +26,9 @@ class DatabaseSeeder extends Seeder
 
         cooperativas::insert([
             "razao_social"=>"Cooperita",
+            "email"=>"miqueiasfernando@gmail.com",
+            "senha"=>Hash::make("123"),
+            "telefone"=>"(15)3272-7070",
             "imagem"=>"teste.jpg",
             "tipo_documento"=>"PJ",
             "cnpj"=>"07.962.851/0007-50",
