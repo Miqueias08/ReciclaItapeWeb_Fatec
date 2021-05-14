@@ -19,6 +19,7 @@
             <th>descrição</th>
             <th>status</th>
             <th>editar</th>
+            <th>Material Aceito</th>
             <th>excluir</th>
         </thead>
         <tbody>
@@ -41,7 +42,10 @@
                     @endif
                 </td>
                 <td><a href="/administrador/atualizar/cooperativa/{{$coope->id_cooperativa}}" id="editar"><p data-placement="Atualizar" title="Atualizar"><button class="btn btn-success btn-xs" data-title="Atualizar"><span class="glyphicon glyphicon-pencil">Atualizar</span></button></p></a></td>
-                 <td><a href="/administrador/excluir/cooperativa/{{$coope->id_cooperativa}}" id="excluir"><p data-placement="Excluir" title="Excluir"><button class="btn btn-danger btn-xs" data-title="Excluir"><span class="glyphicon glyphicon-pencil">Excluir</span></button></p></a></td>
+
+                <td><a href="/administrador/cooperativa/material-aceito/{{$coope->id_cooperativa}}" id="material-aceito"><p data-placement="material aceito" title="material aceito"><button class="btn btn-warning btn-xs" data-title="material aceito"><span class="glyphicon glyphicon-pencil"><i class="fas fa-recycle"></i> Material Aceito</span></button></p></a></td>
+
+                <td><a href="/administrador/excluir/cooperativa/{{$coope->id_cooperativa}}" id="excluir"><p data-placement="Excluir" title="Excluir"><button class="btn btn-danger btn-xs" data-title="Excluir"><span class="glyphicon glyphicon-pencil">Excluir</span></button></p></a></td>
 
             </tr>
 

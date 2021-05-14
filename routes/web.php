@@ -14,7 +14,6 @@ Route::namespace("Site")->group(function(){
 	Route::get('ranking', [SiteController::class, 'ranking']);
 	Route::get('tutoriais', [SiteController::class, 'tutoriais']);
 	Route::post('recuperar/senha', [SiteController::class, 'recuperar_senha']);
-
 	
 
 
@@ -52,6 +51,10 @@ Route::namespace("Site")->group(function(){
 		Route::post('/administrador/cadastro/cooperativas', [AdministradorController::class, 'processa_cadastro_cooperativas']);
 		Route::post('/administrador/atualizar/cooperativas', [AdministradorController::class, 'processa_atualiza_cooperativas']);
 		Route::get('/administrador/excluir/cooperativa/{id}', [AdministradorController::class, 'excluir_cooperativa']);
+		Route::get('administrador/cooperativa/material-aceito/{id}', [AdministradorController::class, 'material_aceito']);
+		Route::post('/administrador/cadastro/material-aceito/{id}', [AdministradorController::class, 'cadastro_material_aceito']);
+		Route::get('/administrador/material-aceito/excluir/{id}', [AdministradorController::class, 'excluir_material_aceito']);
+	
 
 		Route::get('/administrador/sair', [AdministradorController::class, 'admin_sair']);
 		Route::get('admin/pontos', [AdministradorController::class, 'pontos']);

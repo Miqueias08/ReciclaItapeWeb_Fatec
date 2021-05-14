@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\cooperativas;
+use App\Models\materiais_cooperativas;
 use Illuminate\Support\Facades\Hash;
+use DB;
 
 class AdministradorController extends Controller
 {
@@ -92,6 +94,9 @@ class AdministradorController extends Controller
             if($request->input("atualizar-imagem")=="on"){
                  $cooperativa->imagem = Upload_Imagem_Cooperativa($request);
             }
+            if($request->input("atualizar-senha")=="on"){
+                 $cooperativa->senha = Hash::make($request->input("senha"));
+            }
             $cooperativa->save();
             return redirect()->back()->with('COOPERATIVA_ATUALIZADA', 'Cooperativa Atualizada!'); 
         } catch (\Exception $e) {
@@ -106,8 +111,27 @@ class AdministradorController extends Controller
              return redirect()->back()->with('COOPERATIVA_DELETADA_FALHA', 'Falha!'); 
         }
     }
-
-
+    public function material_aceito($id){
+        $materiais = DB::table("materiais_cooperativas")->where("id_cooperativa","=",$id)->get();
+        return view("site.administrador.cadastros.material-aceito",["cooperativa"=>cooperativas::find($id),"materiais"=>$materiais,"titulo"=>"Materiais Aceitos"]);
+    }
+    public function cadastro_material_aceito(Request $request,$id){
+        try {
+            materiais_cooperativas::insert([$request->except("_token")]);
+            return redirect()->back();
+        } catch (\Exception $e) {
+            return redirect()->back();
+        }
+        return $request->all();
+    }
+    public function excluir_material_aceito($id){
+        try {
+            materiais_cooperativas::find($id)->delete();
+            return redirect()->back();
+        } catch (\Exception $e) {
+            return redirect()->back();
+        }
+    }
     public function sair(){
     	 Auth::logout();
     	 return redirect("administrador/login");

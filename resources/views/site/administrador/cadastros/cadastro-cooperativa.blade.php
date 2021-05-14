@@ -38,13 +38,16 @@
         value="{{ old('email') }}"
         @endif>
 
-         <label for="exampleFormControlInput1">Senha</label>
-        <input type="password" class="form-control" name="senha" placeholder="Senha" 
-        @if(isset($dados)) 
-        value="{{$dados->senha}}"
-        @else
-        value="{{ old('senha') }}"
-        @endif>
+        <label for="exampleFormControlInput1">Senha</label>
+        @if(ISSET($dados))
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="atualizar-senha" id="atualizar-senha">
+                <label class="form-check-label" for="flexCheckChecked">
+                    Alterar Senha
+                </label>
+            </div>
+        @endif
+        <input type="password" id="senha"  @if(isset($dados)) style="display: none;" @endif class="form-control" name="senha" placeholder="Senha">
 
          <label for="exampleFormControlInput1">Telefone</label>
         <input type="tel" class="form-control" name="telefone" placeholder="Telefone" 
@@ -169,6 +172,15 @@
         }
         else{
            $("#input-img").hide();
+ 
+        }
+    });
+     $("#atualizar-senha").click(function(){
+        if($('#atualizar-senha').is(":checked")==true){
+            $("#senha").show();
+        }
+        else{
+           $("#senha").hide();
  
         }
     });
