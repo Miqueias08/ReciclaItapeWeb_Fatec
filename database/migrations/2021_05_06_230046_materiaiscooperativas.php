@@ -16,7 +16,6 @@ class Materiaiscooperativas extends Migration
          Schema::create('materiais_cooperativas', function (Blueprint $table) {
            $table->bigIncrements('id_material');
            $table->string('categoria',90);
-           $table->string('icone', 40);
             $table->unsignedBigInteger('id_cooperativa');
            $table->foreign('id_cooperativa')->references('id_cooperativa')->on('cooperativas');
         });

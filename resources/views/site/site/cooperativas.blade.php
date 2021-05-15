@@ -22,16 +22,17 @@
               <div class="card-corpo">
                 <ul>
 
-                  <li class="detalhes"><strong>Telefone:</strong>(15)3207-2106</li><br>
+                  <li class="detalhes"><strong>Telefone:</strong>{{$dt->telefone}}</li><br>
 
-                  <li class="latitude"><strong>Latitude:</strong>-0000</li><br>
+                  <li class="latitude"><strong>Latitude:</strong>{{$dt->lat}}</li><br>
 
-                  <li class="longitude"><strong>Longitude:</strong>-0000</li><br>
+                  <li class="longitude"><strong>Longitude:</strong>{{$dt->lng}}</li><br>
 
-                  <li class="tipos"><strong>Tipos de Lixo Coletado</strong><br>Papel,Plástico</li>
+                  <li class="tipos"><strong>Tipos de Lixo Coletado</strong><br>{{$dt->material_aceito}}</li>
 
                 </ul>
 
+                <a href="/"><button type="button" class="btn btn-success">Visualizar no Mapa</button></a>
               </div>
 
             </div>

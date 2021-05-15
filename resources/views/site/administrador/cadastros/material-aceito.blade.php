@@ -28,14 +28,12 @@
             <table id="mytable" class="table table-bordred table-striped" style="text-align: center;">
                 <thead>
                     <th>Categoria</th>
-                    <th>Icone</th>
                     <th>Excluir</th>
                 </thead>
                 <tbody> 
                     @foreach($materiais as $mt)
                         <tr>
                             <td>{{$mt->categoria}}</td>
-                            <td>{{$mt->icone}}</td>
                             <td><a href="/administrador/material-aceito/excluir/{{$mt->id_material}}" id="excluir"><p data-placement="Excluir" title="Excluir"><button class="btn btn-danger btn-xs" data-title="Excluir"><span class="glyphicon glyphicon-pencil">Excluir</span></button></p></a></td>
                         </tr>
                     @endforeach
@@ -66,10 +64,6 @@
                 <option>Eletrônicos</option>
                 <option>Orgânico</option>
             </select>
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Icone (HTML):</label>
-            <input type="text" class="form-control" name="icone" placeholder="Icone">
           </div>
       </div>
       <div class="modal-footer">

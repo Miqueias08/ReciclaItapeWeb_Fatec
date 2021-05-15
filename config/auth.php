@@ -51,6 +51,11 @@ return [
             'provider' => 'usuarios',
         ],
 
+        'cooperativa' => [
+            'driver' => 'session',
+            'provider' => 'cooperativas',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -89,6 +94,10 @@ return [
         'usuarios' => [
             'driver' => 'eloquent',
             'model' => App\Models\usuarios::class,
+        ],
+        'cooperativas' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\cooperativas::class,
         ],
 
         // 'users' => [

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\cooperativas;
 use App\Models\usuarios;
+use App\Models\materiais_cooperativas;
 use DB;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\nova_senha;
@@ -14,11 +15,13 @@ use Mail;
 class SiteController extends Controller
 {
     public function index(){
-    	$cooperativas = cooperativas::all();
+    	$cooperativas = DB::table("cooperativas")->join("materiais_cooperativas","cooperativas.id_cooperativa","=","materiais_cooperativas.id_cooperativa")->select("cooperativas.*",DB::raw("group_concat(materiais_cooperativas.categoria) as 'material_aceito'"))->groupby("id_cooperativa")->get();
+
     	return view("site.site.reciclar",['cooperativas' => $cooperativas,'titulo'=>"Pontos de Coleta"]);
     }
     public function cooperativas(){
-    	return view("site.site.cooperativas",['cooperativas' => cooperativas::all(),'titulo'=>"Cooperativas"]);
+        $cooperativas = DB::table("cooperativas")->join("materiais_cooperativas","cooperativas.id_cooperativa","=","materiais_cooperativas.id_cooperativa")->select("cooperativas.*",DB::raw("group_concat(materiais_cooperativas.categoria) as 'material_aceito'"))->groupby("id_cooperativa")->get();
+    	return view("site.site.cooperativas",['cooperativas' => $cooperativas,'titulo'=>"Cooperativas"]);
     }
     public function ranking(){
     	return view("site.site.ranking",['titulo'=>"Ranking"]);

@@ -48,7 +48,23 @@
                 </li>
               @else
                 <li class="nav-item">
-                  <a href="/login/cadastro" class="nav-link"><i class="fas fa-user"></i> Login - Cadastro</a>
+                  <a href="/login/cadastro" class="nav-link"><i class="fal fa-user"></i> Login/Cadastro (Usuário)</a>
+                </li>
+              @endif
+              <!-- COOPERATIVA -->
+              @if(Auth::guard('cooperativa')->user())
+                 <li class="nav-item dropdown">
+                   <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button type="button" class="btn btn-success"><i class="fas fa-user"></i> {{Str::limit(Auth::guard('usuario')->user()->nome,15,'....')}}<i class="fas fa-caret-down"></i></button></a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/home">Histórico de Entrega</a>
+                    <a class="dropdown-item" href="/minha-conta">Minha Conta</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/usuario/sair">Sair</a>
+                  </div>
+                </li>
+              @else
+                <li class="nav-item">
+                  <a href="/login/cooperativa" class="nav-link"><i class="fas fa-recycle"></i> Login (Cooperativa)</a>
                 </li>
               @endif
               @if(Auth::guard('admin')->user())

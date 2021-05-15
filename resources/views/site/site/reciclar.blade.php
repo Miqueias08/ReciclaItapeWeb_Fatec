@@ -50,7 +50,8 @@
               content: 
                 "<h2>{{ $marker->razao_social }}</h2>"
                 +"<h5>Endereço</h5> {{ $marker->endereco }}<br>"
-                +"<h5>O ponto coleta os seguintes tipos de lixo</h5> <br>"
+                +"<h5 style='margin-bottom:10'>O ponto coleta os seguintes tipos de lixo</h5>"
+                +"<span class=\"glyphicon glyphicon-file\"></span><strong> {{$marker->material_aceito}}</strong>"
               });
               var marker{{ $marker->id_cooperativa }} = new 
               google.maps.Marker({

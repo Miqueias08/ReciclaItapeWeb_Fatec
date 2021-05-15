@@ -14,7 +14,6 @@ class materiais_cooperativas extends Model
     protected $fillable = [
         'id_material',
         'categoria',
-        'icone',
         'id_cooperativa',
     ];
 }
