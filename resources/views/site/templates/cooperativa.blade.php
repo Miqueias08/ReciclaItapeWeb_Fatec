@@ -4,7 +4,7 @@
   <link rel="stylesheet" type="text/css" href="/css/usuario.css">
   @endpush
     @php
-      $entrega = \App\Models\entregas_usuarios::where("id_cooperativa","=",Auth::guard('cooperativa')->user()->id_cooperativa)->select(DB::raw('SUM(peso) as total_entrega'))->first();
+      $entrega = \App\Models\entregas_usuarios::where("id_cooperativa","=",Auth::guard('cooperativa')->user()->id_cooperativa)->select(DB::raw('COALESCE(SUM(peso),0) as total_entrega'))->first();
     @endphp
     <div class="row">
       <div class="col-md-2 usuario-box navbar-user">
@@ -14,7 +14,7 @@
             <li class="pontuacao-user-number">
               <dl class="pontosUser">
                 <dt>Total de Entregas:</dt>
-                <dd><span class="score-user">{{$entrega->total_entrega}} KG</span></dd>
+                <dd><span class="score-user">{{number_format($entrega->total_entrega,2,",",".")}} KG</span></dd>
               </dl>
             </li>
           </ul>

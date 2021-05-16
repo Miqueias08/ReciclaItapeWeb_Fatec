@@ -15,24 +15,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>0,20</td>
-          <td>Papel</td>
-          <td>Cooperita</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>0,10</td>
-          <td>Vidro</td>
-          <td>Cooperita</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>0,01</td>
-          <td>Vidro</td>
-          <td>Cooperita</td>
-        </tr>
+        @forelse($entregas as $ent)
+           <tr>
+            <th scope="row">{{$ent->id_entrega_usuario}}</th>
+            <td>{{$ent->peso}}</td>
+            <td>{{$ent->tipo_material}}</td>
+            <td>{{$ent->razao_social}}</td>
+          </tr>
+        @empty
+           <tr>
+            <th colspan="4">Nenhum Material Entregue!</th>
+          </tr>
+        @endforelse
       </tbody>
     </table>
 

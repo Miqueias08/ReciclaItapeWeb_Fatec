@@ -51,8 +51,11 @@ class CooperativaController extends Controller
         }
     }
     public function entregas(){
+       $Entregas = entregas_usuarios::where("id_cooperativa","=",Auth::guard('cooperativa')->user()->id_cooperativa)->join("usuarios","entregas_usuarios.usuario_id","=","usuarios.id_usuario")->select("entregas_usuarios.*","usuarios.nome","usuarios.email")->get();
+
       $lixos_aceitos = DB::table("materiais_cooperativas")->where("id_cooperativa","=",Auth::guard("cooperativa")->user()->id_cooperativa)->get();
-    	return view("site.cooperativa.cadastros.entregas",["titulo"=>"Entregas de Lixo","lixos_aceitos"=>$lixos_aceitos]);
+
+    	return view("site.cooperativa.cadastros.entregas",["titulo"=>"Entregas de Lixo","lixos_aceitos"=>$lixos_aceitos,"entregas"=>$Entregas]);
     }
     public function entrega_cadastro(Request $request){
       try {
@@ -84,5 +87,13 @@ class CooperativaController extends Controller
     public function sair(){
        Auth::guard('cooperativa')->logout();
         return redirect("/");
+    }
+    public function excluir_entrega($id){
+      try {
+        entregas_usuarios::find($id)->delete();
+        return redirect()->back()->with('ENTREGA_DELETADA', 'ENVIADO');             
+      } catch (\Exception $e) {
+         return redirect()->back()->with('FALHA_DELETAR', 'FALHA');   
+      }
     }
 }

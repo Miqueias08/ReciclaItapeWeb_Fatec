@@ -30,6 +30,7 @@ Route::namespace("Site")->group(function(){
 		Route::get('/cooperativas/entregas', [CooperativaController::class, 'entregas']);
 		Route::post('/cooperativa/entregas', [CooperativaController::class, 'entrega_cadastro']);
 		Route::get('/cooperativa/sair', [CooperativaController::class, 'sair']);
+		Route::get('/cooperativa/excluir/entrega/{id}', [CooperativaController::class, 'excluir_entrega']);
 	});
 
 

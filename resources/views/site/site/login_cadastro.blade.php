@@ -2,7 +2,7 @@
 @section('principal')
 @push('scriptsHead')
 <link rel="stylesheet" type="text/css" href="/css/login_cadastro.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<link rel="stylesheet" href="/css/jquery-confirm.min.css">
 @endpush
 <div class="container" id="box-geral">
 <img id="cad-bg" src="/img/login-registro.jpg" alt="Background">
@@ -154,7 +154,7 @@
   </div>
 </div>
     @push('scriptsFooter')
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+      <script src="/js/jquery-confirm.min.js"></script>
       @if(session('EMAIL_ENVIADO'))
         <script type="text/javascript">
             $.confirm({

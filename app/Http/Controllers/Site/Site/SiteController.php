@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\cooperativas;
 use App\Models\usuarios;
 use App\Models\materiais_cooperativas;
+use App\Models\entregas_usuarios;
 use DB;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\nova_senha;
@@ -24,7 +25,8 @@ class SiteController extends Controller
     	return view("site.site.cooperativas",['cooperativas' => $cooperativas,'titulo'=>"Cooperativas"]);
     }
     public function ranking(){
-    	return view("site.site.ranking",['titulo'=>"Ranking"]);
+        $ranking = entregas_usuarios::join("usuarios","entregas_usuarios.usuario_id","=","usuarios.id_usuario")->select("usuarios.nome",DB::raw('COALESCE(SUM(peso),0) as total_entrega'))->groupby("id_usuario")->orderby("total_entrega","desc")->get();
+    	return view("site.site.ranking",['titulo'=>"Ranking","ranking"=>$ranking]);
     }
     public function tutoriais(){
     	$tutoriais=null;
