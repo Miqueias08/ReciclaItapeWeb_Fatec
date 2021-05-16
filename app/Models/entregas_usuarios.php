@@ -13,9 +13,9 @@ class entregas_usuarios extends Model
     public $timestamps = false;
     protected $fillable = [
         'id_entrega_usuario',
-        'usuario',
         'peso',
         'tipo_material',
         'usuario_id',
+        'id_cooperativa'
     ];
 }

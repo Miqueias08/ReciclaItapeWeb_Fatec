@@ -4,6 +4,9 @@
   <link rel="stylesheet" type="text/css" href="/css/administrador.css">
   @endpush
   @stack('scripts_head')
+    @php
+      $entrega = \App\Models\entregas_usuarios::select(DB::raw('SUM(peso) as total_entrega'))->first();
+    @endphp
     <div class="row">
       <div class="col-md-2 usuario-box navbar-user">
         <div class="pontuacao-user">
@@ -12,7 +15,7 @@
             <li class="pontuacao-user-number">
               <dl class="pontosUser">
                 <dt>Atualmente possuimos:</dt>
-                <dd><span class="score-user">80 KG</span><br>
+                <dd><span class="score-user">{{$entrega->total_entrega}} KG</span><br>
                 De Entrega de Lixo.</dd>
               </dl>
             </li>

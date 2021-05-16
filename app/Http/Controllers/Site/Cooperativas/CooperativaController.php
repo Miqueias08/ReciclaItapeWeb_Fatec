@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use App\Models\cooperativas;
+use App\Models\usuarios;
+use Illuminate\Support\Facades\Validator;
+use App\Models\entregas_usuarios;
 use App\Models\materiais_cooperativas;
 
 class CooperativaController extends Controller
@@ -46,5 +49,40 @@ class CooperativaController extends Controller
         } catch (\Exception $e) {
             return redirect()->back();
         }
+    }
+    public function entregas(){
+      $lixos_aceitos = DB::table("materiais_cooperativas")->where("id_cooperativa","=",Auth::guard("cooperativa")->user()->id_cooperativa)->get();
+    	return view("site.cooperativa.cadastros.entregas",["titulo"=>"Entregas de Lixo","lixos_aceitos"=>$lixos_aceitos]);
+    }
+    public function entrega_cadastro(Request $request){
+      try {
+         $validator = Validator::make($request->all(), [
+            'tipo_material'=>'required|not_in:0',
+            'email_usuario'=>'required|email|exists:usuarios,email',
+            'quantidade'=>'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+            ->withErrors($validator)
+             ->withInput();
+        }
+        else{
+          $user = DB::table('usuarios')->where('email', $request->input("email_usuario"))->first();
+          $dados = [
+            "peso"=>$request->input("quantidade"),
+            "tipo_material"=>$request->input("tipo_material"),
+            "usuario_id"=>$user->id_usuario,
+            "id_cooperativa"=>Auth::guard("cooperativa")->user()->id_cooperativa,
+          ];
+          entregas_usuarios::insert($dados);
+          return redirect()->back()->withSuccess('Material Adicionado!');
+        }
+      } catch (\Exception $e) {
+        return redirect()->back()->withInput()->withErrors('Falha no Cadastro!');
+      }
+    }
+    public function sair(){
+       Auth::guard('cooperativa')->logout();
+        return redirect("/");
     }
 }

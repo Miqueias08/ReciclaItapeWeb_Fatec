@@ -18,7 +18,9 @@ class EntregaUsuario extends Migration
            $table->float('peso',10,2);
            $table->string('tipo_material');
            $table->unsignedBigInteger('usuario_id');
+           $table->unsignedBigInteger('id_cooperativa');
            $table->foreign('usuario_id')->references('id_usuario')->on('usuarios');
+           $table->foreign('id_cooperativa')->references('id_cooperativa')->on('cooperativas');
         });
     }
 

@@ -33,7 +33,7 @@ class LoginCooperativa extends Controller
 		            $user = cooperativas::find($id->id_cooperativa);
 		            Auth::guard("cooperativa")->login($user);
 		            if(Auth::guard("cooperativa")->user()){
-		                return redirect("cooperativa/gerenciar");
+		                return redirect("/cooperativas/entregas");
 		            }
 		            else{
 		            	return redirect()->back()->with('ERRO', 'Falha no login');

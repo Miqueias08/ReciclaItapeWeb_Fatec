@@ -53,13 +53,13 @@
               @endif
               <!-- COOPERATIVA -->
               @if(Auth::guard('cooperativa')->user())
-                 <li class="nav-item dropdown">
+                 <li class="nav-item dropdown" style="margin-left: 10px;">
                    <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button type="button" class="btn btn-success"><i class="fas fa-recycle"></i>  {{Str::limit(Auth::guard('cooperativa')->user()->razao_social,15,'....')}}<i class="fas fa-caret-down"></i></button></a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/home">Histórico de Entrega</a>
-                    <a class="dropdown-item" href="/minha-conta">Minha Conta</a>
+                    <a class="dropdown-item" href="/cooperativa/entregas">Entregas</a>
+                    <a class="dropdown-item" href="/cooperativa/gerenciar">Gerenciar</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/usuario/sair">Sair</a>
+                    <a class="dropdown-item" href="/cooperativa/sair">Sair</a>
                   </div>
                 </li>
               @else

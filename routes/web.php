@@ -27,6 +27,9 @@ Route::namespace("Site")->group(function(){
 		Route::post("/cooperativa/atualizar", [CooperativaController::class, 'atualizar']);
 		Route::get("/cooperativa/material-aceito/excluir/{id}", [CooperativaController::class, 'excluir_material']);
 		Route::post('/cooperativa/cadastro/material-aceito/{id}', [AdministradorController::class, 'cadastro_material_aceito']);
+		Route::get('/cooperativas/entregas', [CooperativaController::class, 'entregas']);
+		Route::post('/cooperativa/entregas', [CooperativaController::class, 'entrega_cadastro']);
+		Route::get('/cooperativa/sair', [CooperativaController::class, 'sair']);
 	});
 
 
