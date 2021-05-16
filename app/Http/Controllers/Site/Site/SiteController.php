@@ -30,6 +30,9 @@ class SiteController extends Controller
     	$tutoriais=null;
     	return view("site.site.tutoriais",['titulo'=>"Tutoriais","tutoriais"=>$tutoriais]);
     }
+    public function login_cooperativa(){
+        return view("site.site.login-cooperativa");
+    }
     public function recuperar_senha(Request $request){
         try {
             $user = DB::table('usuarios')->where('email', $request->input("email"))->first();

@@ -54,7 +54,7 @@
               <!-- COOPERATIVA -->
               @if(Auth::guard('cooperativa')->user())
                  <li class="nav-item dropdown">
-                   <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button type="button" class="btn btn-success"><i class="fas fa-user"></i> {{Str::limit(Auth::guard('usuario')->user()->nome,15,'....')}}<i class="fas fa-caret-down"></i></button></a>
+                   <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button type="button" class="btn btn-success"><i class="fas fa-recycle"></i>  {{Str::limit(Auth::guard('cooperativa')->user()->razao_social,15,'....')}}<i class="fas fa-caret-down"></i></button></a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/home">Histórico de Entrega</a>
                     <a class="dropdown-item" href="/minha-conta">Minha Conta</a>
@@ -68,8 +68,8 @@
                 </li>
               @endif
               @if(Auth::guard('admin')->user())
-                 <li class="nav-item dropdown">
-                   <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button type="button" class="btn btn-success"><i class="fas fa-user-shield"></i> {{Str::limit(Auth::guard('admin')->user()->nome,15,'....')}}<i class="fas fa-caret-down"></i></button></a>
+                 <li class="nav-item dropdown" style="margin-left: 10px;">
+                   <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button type="button" class="btn btn-success"><i class="fas fa-user-shield"></i> {{Str::limit(Auth::guard('admin')->user()->nome,5,'....')}}<i class="fas fa-caret-down"></i></button></a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/administrador/cooperativas">Cooperativas</a>
                     <div class="dropdown-divider"></div>
@@ -77,16 +77,7 @@
                   </div>
                 </li>
               @endif
-                <li class="nav-item" id="instagram-icon">
-                  <a href="" target="_blank" class="nav-link">
-                      <i class="fab fa-instagram"></i>
-                  </a>
-                </li>
-                <li class="nav-item" id="facebook-icon">
-                  <a href="#" class="nav-link">
-                      <i class="fab fa-facebook-square"></i>
-                  </a>
-                </li>
+               
             </ul>
           </div>
       </div>

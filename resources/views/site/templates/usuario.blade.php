@@ -1,7 +1,7 @@
 @extends('site.templates.principal')
 @section('principal')
   @push('scriptsHead')
-  <link rel="stylesheet" type="text/css" href="css/usuario.css">
+  <link rel="stylesheet" type="text/css" href="/css/usuario.css">
   @endpush
   
     <div class="row">

@@ -122,7 +122,6 @@ class AdministradorController extends Controller
         } catch (\Exception $e) {
             return redirect()->back();
         }
-        return $request->all();
     }
     public function excluir_material_aceito($id){
         try {

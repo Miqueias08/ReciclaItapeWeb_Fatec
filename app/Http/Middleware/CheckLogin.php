@@ -30,6 +30,11 @@ class CheckLogin
                     return redirect("/home");
                 }  
             break;
+            case 'login/cooperativa':
+                if(Auth::guard("cooperativa")->user()){
+                    return redirect("/cooperativa/gerenciar");
+                }  
+            break;
         }
 
         return $next($request);
