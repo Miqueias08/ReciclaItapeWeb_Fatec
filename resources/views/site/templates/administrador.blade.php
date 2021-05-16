@@ -25,6 +25,7 @@
           <ul>
             <li><a href="/administrador/cooperativas">BUSCAS DE COOPERATIVAS</a></li>
             <li><a href="/administrador/cadastro/cooperativas">CADASTRO DE COOPERATIVAS</a></li>
+            <li><a href="/administrador/cadastro/tutoriais">CADASTRO DE TUTORIAIS</a></li>
           </ul>
         </div>
       </div>

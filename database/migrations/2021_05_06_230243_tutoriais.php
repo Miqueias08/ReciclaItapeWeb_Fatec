@@ -14,10 +14,15 @@ class Tutoriais extends Migration
     public function up()
     {
          Schema::create('tutoriais', function (Blueprint $table) {
-           $table->bigIncrements('id_tutorial');
-           $table->string('titulo',80);
-           $table->string('subtitulo',45);
-           $table->text('texto');
+            $table->increments('id_tutorial');
+            $table->string('autor',30);
+            $table->string('titulo',200);
+            $table->string('subtitulo',30);
+            $table->string('resumo',300);
+            $table->string('imagem',250);
+            $table->text('texto');
+            $table->string('video')->nullable();
+            $table->timestamp('dataHora')->useCurrent();
         });
     }
 

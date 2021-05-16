@@ -13,8 +13,13 @@ class tutoriais extends Model
     public $timestamps = false;
     protected $fillable = [
         'id_tutorial',
+        'autor',
         'titulo',
-        'subtitulo',
+        'subtitulo'
+        'resumo',
+        'imagem',
         'texto',
+        'video',
+        'dataHora'
     ];
 }

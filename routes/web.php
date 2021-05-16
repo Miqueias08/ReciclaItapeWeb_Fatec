@@ -81,6 +81,8 @@ Route::namespace("Site")->group(function(){
 		Route::post('novo/ponto', [AdministradorController::class, 'cadastroPonto']);
 		Route::get('editar/ponto/{id}', [AdministradorController::class, 'editar']);
 		Route::get('deletar/ponto/{id}', [AdministradorController::class, 'deletar']);
+		Route::get('/administrador/cadastro/tutoriais', [AdministradorController::class, 'cadastro_tutoriais']);
+		Route::post("administrador/cadastro/tutorial",[AdministradorController::class, 'cadastro_tutoriais_processa']);
 	});
 	/*/////////////////////////////////////////////////////////////////////*/
 });

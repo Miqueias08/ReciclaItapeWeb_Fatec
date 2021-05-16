@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\cooperativas;
 use App\Models\materiais_cooperativas;
+use App\Models\tutoriais;
 use Illuminate\Support\Facades\Hash;
 use DB;
 
@@ -135,5 +136,33 @@ class AdministradorController extends Controller
     	 Auth::logout();
     	 return redirect("administrador/login");
     }
-   
+    public function cadastro_tutoriais(){
+        return view("site.administrador.cadastros.tutoriais");
+    }
+    public function cadastro_tutoriais_processa(Request $request){
+         $validated = $request->validate([
+
+            'titulo'=>'required|max:87',
+
+            'subtitulo'=>'required|max:30',
+
+            'autor'=>'required',
+
+            'imagem'=>'required',
+           
+            'resumo'=>'required|max:268',
+            
+            'texto'=>'required',
+        ]);
+        try {
+            /*IMAGEM*/
+            $requestData = $request->except("_token");
+            $requestData['imagem'] = Upload_Imagem_Tutorial($request);
+
+            tutoriais::insert($requestData);
+            return redirect()->back()->withSuccess('Tutorial Cadastrado!');    
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->withErrors('Falha no Cadastro!');
+        }
+    }
 }
