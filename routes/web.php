@@ -45,6 +45,8 @@ Route::namespace("Site")->group(function(){
 		Route::get('/home', [UsuarioController::class, 'home_usuario']);
 		Route::get('/minha-conta', [UsuarioController::class, 'minha_conta']);
 		Route::get('/usuario/sair', [UsuarioController::class, 'usuario_sair']);
+		Route::post('/usuario/atualizar/nome', [UsuarioController::class, 'atualizar_nome']);
+		Route::post('/usuario/atualizar/senha', [UsuarioController::class, 'atualizar_senha']);
 	});
 
 
