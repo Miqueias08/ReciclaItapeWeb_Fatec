@@ -40,7 +40,8 @@
           disableDefaultUI: true,
           scrollwheel: false,
           options:{
-            gestureHandling: 'greedy'
+            gestureHandling: 'greedy',
+            draggable: !("ontouchend" in document)
           }
         });
 
