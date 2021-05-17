@@ -41,8 +41,8 @@
             disableDefaultUI: true,
             scrollwheel: false,
             options:{
-               scrollwheel: false,
-              draggable:drgflag,
+               draggable: isDraggable,
+                scrollwheel: false
             }
           });
         }
