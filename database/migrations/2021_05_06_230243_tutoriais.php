@@ -18,7 +18,6 @@ class Tutoriais extends Migration
             $table->string('autor',30);
             $table->string('titulo',200);
             $table->string('subtitulo',30);
-            $table->string('resumo',300);
             $table->string('imagem',250);
             $table->text('texto');
             $table->string('video')->nullable();

@@ -139,6 +139,60 @@ class AdministradorController extends Controller
     public function cadastro_tutoriais(){
         return view("site.administrador.cadastros.tutoriais");
     }
+    public function busca_tutoriais(){
+        $tutoriais = tutoriais::all();
+        return view("site.administrador.buscas.tutoriais",["tutoriais"=>$tutoriais]);
+    }
+    public function atualizar_tutorial($id){
+        $tutorial = tutoriais::find($id);
+        return view("site.administrador.cadastros.tutoriais",["tutorial"=>$tutorial]);
+    }
+    public function processa_atualizar_tutorial(Request $request,$id){
+        if($request->input("atualizar-imagem")=="on"){
+             $validated = $request->validate([
+
+                'titulo'=>'required|max:87',
+
+                'subtitulo'=>'required|max:30',
+
+                'autor'=>'required',
+                
+                'texto'=>'required',
+
+                'imagem'=>'required'
+            ]); 
+        }
+        else{
+            $validated = $request->validate([
+
+                'titulo'=>'required|max:87',
+
+                'subtitulo'=>'required|max:30',
+
+                'autor'=>'required',
+                
+                'texto'=>'required',
+            ]); 
+        }
+        try {
+            $tutorial = tutoriais::find($id);
+            $tutorial->titulo = $request->input("titulo");
+            $tutorial->subtitulo = $request->input("subtitulo");
+            $tutorial->autor = $request->input("autor");
+            $tutorial->video = $request->input("video");
+            $tutorial->texto = $request->input("texto");
+            if($request->input("atualizar-imagem")=="on"){
+                $requestData = $request->except("_token");
+                $tutorial->imagem = Upload_Imagem_Tutorial($request);
+            }
+            $tutorial->save(); 
+            return redirect()->back()->withSuccess('Tutorial Atualizado!');    
+
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->withErrors('Falha ao Atualizar!');
+        }
+        return $request->all();
+    }
     public function cadastro_tutoriais_processa(Request $request){
          $validated = $request->validate([
 
@@ -149,8 +203,6 @@ class AdministradorController extends Controller
             'autor'=>'required',
 
             'imagem'=>'required',
-           
-            'resumo'=>'required|max:268',
             
             'texto'=>'required',
         ]);

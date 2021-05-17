@@ -14,20 +14,29 @@
     </div>
   
     <div class="noticias">
-      <div class="cardcontainer">
-        <div class="photo"> <img src="https://images.pexels.com/photos/2346006/pexels-photo-2346006.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500">
-          <div class="photos">Reciclagem</div>
+
+      @forelse($tutoriais as $tuto)
+
+        <div class="cardcontainer">
+          <div class="photo"> <img src="/img-tutorial/{{$tuto->imagem}}">
+            <div class="photos">Reciclagem</div>
+          </div>
+          <div class="content">
+            <p class="txt4">{{$tuto->titulo}}</p>
+            <p class="txt5">{{$tuto->subtitulo}}</p>
+            <p class="txt2">{{Str::limit($tuto->texto,148)}}</p>
+          </div>
+          <div class="footer">
+            <p><a class="waves-effect waves-light btn-news" href="/tutorial/{{$tuto->id_tutorial}}">Ler Mais</a><a id="heart"></a></p>
+            <p class="txt3"><i class="far fa-clock"></i>{{date('d-m-Y H:i', strtotime($tuto->dataHora))}}</p>
+          </div>
         </div>
-        <div class="content">
-          <p class="txt4">City Lights In Newyork</p>
-          <p class="txt5">A city that never sleeps</p>
-          <p class="txt2">New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling.</p>
-        </div>
-        <div class="footer">
-          <p><a class="waves-effect waves-light btn-news" href="#">Ler Mais</a><a id="heart"></a></p>
-          <p class="txt3"><i class="far fa-clock"></i>10 Minutes Ago</p>
-        </div>
-      </div>
+
+      @empty
+        <p>Nenhum Tutorial Encontrado!</p>
+      @endforelse
+
+
     </div>
     
 

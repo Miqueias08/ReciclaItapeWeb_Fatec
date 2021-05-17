@@ -8,6 +8,7 @@ use App\Models\cooperativas;
 use App\Models\usuarios;
 use App\Models\materiais_cooperativas;
 use App\Models\entregas_usuarios;
+use App\Models\tutoriais;
 use DB;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\nova_senha;
@@ -29,8 +30,11 @@ class SiteController extends Controller
     	return view("site.site.ranking",['titulo'=>"Ranking","ranking"=>$ranking]);
     }
     public function tutoriais(){
-    	$tutoriais=null;
-    	return view("site.site.tutoriais",['titulo'=>"Tutoriais","tutoriais"=>$tutoriais]);
+    	return view("site.site.tutoriais",['titulo'=>"Tutoriais","tutoriais"=>tutoriais::all()]);
+    }
+    public function exibir_tutorial($id){
+        $tutorial = tutoriais::find($id);
+        return view("site.site.exibir_tutorial",["tutorial"=>$tutorial]);
     }
     public function login_cooperativa(){
         return view("site.site.login-cooperativa");

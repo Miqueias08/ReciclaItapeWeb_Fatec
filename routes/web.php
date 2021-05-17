@@ -15,9 +15,9 @@ Route::namespace("Site")->group(function(){
 	Route::get('obter/pontos', [SiteController::class, 'obterPontos']);
 	Route::get('ranking', [SiteController::class, 'ranking']);
 	Route::get('tutoriais', [SiteController::class, 'tutoriais']);
+	Route::get('/tutorial/{id}', [SiteController::class, 'exibir_tutorial']);
 	Route::post('recuperar/senha', [SiteController::class, 'recuperar_senha']);
 	Route::get('/login/cooperativa', [SiteController::class, 'login_cooperativa'])->middleware("CheckLogin");
-
 
 	/*COOPERATIVA*/
 	Route::post('/login/cooperativa', [LoginCooperativa::class, 'processa_login_cooperativa']);	
@@ -72,6 +72,9 @@ Route::namespace("Site")->group(function(){
 		Route::get('administrador/cooperativa/material-aceito/{id}', [AdministradorController::class, 'material_aceito']);
 		Route::post('/administrador/cadastro/material-aceito/{id}', [AdministradorController::class, 'cadastro_material_aceito']);
 		Route::get('/administrador/material-aceito/excluir/{id}', [AdministradorController::class, 'excluir_material_aceito']);
+		Route::get('/administrador/busca/tutoriais', [AdministradorController::class, 'busca_tutoriais']);
+		Route::get('/administrador/atualizar/tutorial/{id}', [AdministradorController::class, 'atualizar_tutorial']);
+		Route::post('/administrador/atualizar/tutorial/{id}', [AdministradorController::class, 'processa_atualizar_tutorial']);
 	
 
 		Route::get('/administrador/sair', [AdministradorController::class, 'admin_sair']);

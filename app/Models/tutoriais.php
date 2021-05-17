@@ -15,8 +15,7 @@ class tutoriais extends Model
         'id_tutorial',
         'autor',
         'titulo',
-        'subtitulo'
-        'resumo',
+        'subtitulo',
         'imagem',
         'texto',
         'video',

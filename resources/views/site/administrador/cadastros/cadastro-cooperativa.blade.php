@@ -69,7 +69,7 @@
         <input type="file" @if(isset($dados)) style="display: none;" @endif class="form-control" name="imagem" placeholder="Imagens" accept="image/png, image/jpeg,image/jpg" multiple="off" id="input-img" value="">
         <div class="imagens-ordem">
           @if(ISSET($dados))
-            <img src="/cooperativas/{{$dados->imagem}}" width="200px">
+            <img src="/img-cooperativas/{{$dados->imagem}}" width="200px">
           @endif
         </div>
 

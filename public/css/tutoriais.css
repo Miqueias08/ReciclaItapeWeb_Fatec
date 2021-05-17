@@ -33,25 +33,9 @@ h1,p{
 
 
 
-.noticias{
-	display: inline-block;
-}
-.cardcontainer{
-	cursor: pointer;
-	display: inline-block;
-}
 
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'roboto', sans-serif;
-    background-color: #F2F2F2
-}
 
-h1 {
-    text-align: center;
-    color: #333333
-}
+
 
 .cardcontainer {
     width: 350px;
@@ -85,7 +69,7 @@ h1 {
 
 .content {
     width: 80%;
-    height: 100px;
+    height: 200px
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -198,4 +182,201 @@ h1 {
 .fa-clock,
 .fa-comments {
     margin-right: 7px
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Tutoriais*/
+.TutoriaisMain h1{
+  font-size: 2em;
+  text-align: center;
+  font-weight: bold;
+}
+.TutoriaisMain p{
+  text-align: center;
+
+}
+.TutoriaisMain p i {
+  font-size: 1.2em;
+}
+.contentText{
+  min-height: 500px !important;
+  height:auto;
+}
+.boxtext{
+  height: 100%;
+  min-height: 100%
+}
+.iframe{
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.iframe iframe{
+  width: 700px;
+  height: 350px;
+}
+.imgTuto{
+  background-color: #363636;
+  background-size: 100%;
+  
+  background-repeat: no-repeat;
+}
+.textTuto p::first-letter{
+  font-size: 1.5em;
+}
+.textTuto p{
+  text-align: justify;
+  padding-top: 35px;
+  font-size: 1.3em;
+  text-indent: 50px;
+  padding-bottom: 50px;
+  line-height: 1.5;
+}
+
+/*Paginação Tutoriais*/
+.paginacao{
+  clear: both;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+
+
+/********************************/
+/*          Media Queries       */
+/********************************/
+/*Versão Desktop*/
+@media screen and (min-width: 995px){
+ 
+  /*Tutoriais Desktop*/
+  #box1{
+    height: 683px;
+    padding-top: 6em;
+    margin-bottom: 1em;
+  }
+  .titulo
+  {
+    text-align: center;
+    color: #666;
+  }
+  .titulo p
+  {
+    text-align: center;
+    font-size: 1.2em;
+    padding-bottom: 2em;
+    margin-bottom: 5em;
+    border-bottom: 3px double  rgba(144, 144, 144, 0.25);
+  }
+  .titulo h1
+  {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+  }
+  .thumbnail {
+    border: 0px;
+    border-radius: 5px;
+  }
+  .imagemThubnail{
+    height: 202px;
+    background-color: #363636;
+    background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .caption {
+    height: 350px;
+  }
+  .caption h3{
+    height: auto;
+    color: #666;
+    font-size: 1.5em;
+    text-align: center;
+    padding-bottom: 0px;
+
+    font-weight: bold;
+  }
+  .caption p{
+    text-align: justify;
+    font-size: 1.1em;
+    height: 70px;
+  }
+  .ReadMore{
+    clear: both;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+  /*Tutoriais Usuarios*/
+  .imgTuto{
+    height: 480px;
+  }
+}
+
+/*Versão Mobile*/
+@media screen and (max-width: 994px){
+  /*Tutoriais Mobile*/
+  .titulo h1,p{
+    text-align: center;
+  }
+  .thumbnail{
+    border:0px;
+  }
+  .caption h3{
+    font-size: 1.5em;
+    color: #666;
+    text-align: center;
+  }
+  .imagemThubnail{
+    height: 200px;
+    background-color: #363636;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+    cursor: pointer;
+    background-position: 0px -130px;
+  }
+  .imgTuto{
+    height: 210px;
+    background-size: 100% 100%;
+  }
 }
