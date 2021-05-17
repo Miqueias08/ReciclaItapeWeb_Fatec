@@ -36,7 +36,7 @@
         if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
           var map = new google.maps.Map(document.getElementById('map'), {
             center: new google.maps.LatLng(-23.589115,-48.048801),
-            zoom: 12,
+            zoom: 13,
             styles: styleArray,
             disableDefaultUI: true,
             scrollwheel: false,
