@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\cooperativas;
 use App\Models\administradores;
+use App\Models\tutoriais;
+use App\Models\entregas_usuarios;
+use App\Models\materiais_cooperativa;
+use App\Models\usuarios;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +25,16 @@ class DatabaseSeeder extends Seeder
         administradores::insert([
             "nome"=>"Miqueias Fernando",
             "email"=>"miqueiasfernando@gmail.com",
+            "senha"=>Hash::make("123")
+        ]);
+        administradores::insert([
+            "nome"=>"Alex Mariano",
+            "email"=>"alex@gmail.com",
+            "senha"=>Hash::make("123")
+        ]);
+        administradores::insert([
+            "nome"=>"Gilson Willian",
+            "email"=>"gilson@gmail.com",
             "senha"=>Hash::make("123")
         ]);
 
@@ -38,6 +52,33 @@ class DatabaseSeeder extends Seeder
             "lng"=>-48.041836782554775,
             "descricao"=>"Cooperita de reciclagem da cidade de Itapetininga",
             "status"=>1
+        ]);
+
+        tutoriais::insert([
+            "autor"=>"Miqueias Fernando",
+            "titulo"=>"Como Reciclar Papel",
+            "subtitulo"=>"A reciclagem do papel é....",
+            "imagem"=>"teste.jpg",
+            "texto"=>str_random(3500),
+            "video"=>"https://www.youtube.com/embed/fjt5gWCx120",
+        ]);
+
+        materiais_cooperativa::insert([
+            "categoria"=>"Papel",
+            "id_cooperativa"=>1
+        ]);
+
+        usuarios::insert([
+            "nome"=>"Miquéias Fernando",
+            "email"=>"miqueiasfernando@gmail.com",
+            "senha"=>Hash::make("123")
+        ]);
+
+        entregas_usuarios::insert([
+            "peso"=>20,
+            "tipo_material"=>"papel",
+            "usuario_id"=>1,
+            "id_cooperativa"=>1
         ]);
     }
 }
