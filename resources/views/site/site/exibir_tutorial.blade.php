@@ -1,7 +1,7 @@
 @extends('site.templates.principal')
 @section('principal')
   @push('scriptsHead')
-    <link rel="stylesheet" type="text/css" href="/css/tutoriais.css">
+    <link rel="stylesheet" type="text/css" href="/css/exibir-tutorial.css">
   @endpush
     <div class="container-fluid TutoriaisMain">
   <div class="Title">
@@ -31,27 +31,13 @@
 
         @endif
       </div>
-      <div class="textTuto col-md-8 col-md-offset-2">
+      <div class="textTuto col-md-12 col-md-offset-2">
       {!!$tutorial->texto!!}
       </div>
     
     </div>
   </div>
 </div>
-<style type="text/css">
-html, body {
-  min-height: 100% !important;
-  height: 100%;
-}
-body{
-  background-color: #FFFAFA;
-}
-</style>
-
-
-
-
-
 
 
 

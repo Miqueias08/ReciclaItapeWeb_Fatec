@@ -1,5 +1,6 @@
 @extends("site.templates.administrador")
 @push("scripts_head")
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 @endpush
 @section("conteudo-admin")
  <h1>@if(isset($tutorial)) Atualizar Tutorial #{{$tutorial->id_tutorial}} @else Nova Informação ou Tutorial @endif</h1>
@@ -11,7 +12,7 @@
       Painel
     </div>
     <div class="panel-body">
-        <form id="upload" method="post" enctype="multipart/form-data" @if(isset($tutorial)) action="/administrador/atualizar/tutorial/{{$tutorial->id_tutorial}}" @else action="/administrador/cadastro/tutorial" @endif >
+        <form id="upload" method="post" enctype="multipart/form-data" @if(isset($tutorial)) action="/administrador/atualizar/tutorial/{{$tutorial->id_tutorial}}" @else action="/administrador/cadastro/tutorial" @endif id="dados">
              @if ($errors->any())
                 <div class="alert alert-danger">
                   <ul>
@@ -70,7 +71,10 @@
             </div>
             <br>
             <label for="texto">Texto<span class="font-red">*</span></label>
-            <textarea id="texto" name="texto" class="form-control">@if(isset($tutorial)){{$tutorial->texto}}@else{{old('texto')}}@endif</textarea>
+            <input type="hidden" name="texto" id="texto" value="">
+            <div id="editor" name="texto">
+             @if(isset($tutorial)){{$tutorial->texto}}@else{{old('texto')}}@endif
+            </div>
             <br>
             <button type="submit" class="btn btn-primary">@if(isset($tutorial)) Atualizar @else Cadastro @endif</button>
         </form>
@@ -82,6 +86,7 @@
 <link rel="stylesheet" href="/css/jquery-confirm.min.css">
 <script src="/js/jquery-confirm.min.js"></script>
 <script type="text/javascript" src="/js/mascara.js"></script>
+
 <script type="text/javascript">
     $("#atualizar-img").click(function(){
         if($('#atualizar-img').is(":checked")==true){
@@ -91,6 +96,21 @@
            $("#input-img").hide();
  
         }
+    });
+</script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+  var quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+</script>
+<script type="text/javascript">
+    $( "#dados" ).submit(function() {
+        var length = quill.getLength();
+        var text = quill.getText(0, length);
+        var $input = $(this).find("input[name=texto]");
+        $input.val(text);
+
     });
 </script>
 @endpush
