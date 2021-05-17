@@ -38,7 +38,7 @@
               <!-- USUARIO -->
               @if(Auth::guard('usuario')->user())
                  <li class="nav-item dropdown">
-                   <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button type="button" class="btn btn-success"><i class="fas fa-user"></i> {{Str::limit(Auth::guard('usuario')->user()->nome,15,'....')}}<i class="fas fa-caret-down"></i></button></a>
+                   <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button type="button" class="btn btn-success"><i class="far fa-user"></i> {{Str::limit(Auth::guard('usuario')->user()->nome,15,'....')}}<i class="fas fa-caret-down"></i></button></a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/home">Histórico de Entrega</a>
                     <a class="dropdown-item" href="/minha-conta">Minha Conta</a>
@@ -48,7 +48,7 @@
                 </li>
               @else
                 <li class="nav-item">
-                  <a href="/login/cadastro" class="nav-link"><i class="fal fa-user"></i> Login/Cadastro (Usuário)</a>
+                  <a href="/login/cadastro" class="nav-link"><i class="far fa-user"></i> Login/Cadastro (Usuário)</a>
                 </li>
               @endif
               <!-- COOPERATIVA -->
@@ -90,7 +90,11 @@
   <div class="container-fluid" id="dados">
           @yield('principal')
   </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+  @yield('rodape')
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>

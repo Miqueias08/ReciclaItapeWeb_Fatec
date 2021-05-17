@@ -9,7 +9,7 @@
     }
   </style>
 
-  <div id="map" style="width:100%;height:100%;">
+  <div id="map" style="width:100%;height:754px;">
     
   </div>
 
@@ -92,5 +92,13 @@
     src="https://maps.googleapis.com/maps/api/js?key={{config('app.api_maps')}}&callback=initMap">
   </script>
   @endpush
+@endsection
+@section('rodape')
+  @include("site.templates.rodape")
+  <style type="text/css">
+    #dados{
+      min-height: 100%;height: auto;display: block;position: inherit;
+    }
+  </style>
 @endsection
     

@@ -48,4 +48,13 @@
    
   @endpush
 @endsection
+@section('rodape')
+  @include("site.templates.rodape")
+  <style type="text/css">
+    #dados{
+      min-height: 100%;height: auto;display: block;position: inherit;
+    }
+  </style>
+@endsection
+    
     
