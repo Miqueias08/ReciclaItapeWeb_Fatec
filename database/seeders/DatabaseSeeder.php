@@ -10,7 +10,7 @@ use App\Models\cooperativas;
 use App\Models\administradores;
 use App\Models\tutoriais;
 use App\Models\entregas_usuarios;
-use App\Models\materiais_cooperativa;
+use App\Models\materiais_cooperativas;
 use App\Models\usuarios;
 
 class DatabaseSeeder extends Seeder
@@ -59,11 +59,11 @@ class DatabaseSeeder extends Seeder
             "titulo"=>"Como Reciclar Papel",
             "subtitulo"=>"A reciclagem do papel é....",
             "imagem"=>"teste.jpg",
-            "texto"=>str_random(3500),
+            "texto"=>rand(0, 3500),
             "video"=>"https://www.youtube.com/embed/fjt5gWCx120",
         ]);
 
-        materiais_cooperativa::insert([
+        materiais_cooperativas::insert([
             "categoria"=>"Papel",
             "id_cooperativa"=>1
         ]);
