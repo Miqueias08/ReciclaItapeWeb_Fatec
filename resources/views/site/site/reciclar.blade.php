@@ -33,17 +33,32 @@
         }
       ];
       function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: new google.maps.LatLng(-23.589115,-48.048801),
-          zoom: 14,
-          styles: styleArray,
-          disableDefaultUI: true,
-          scrollwheel: false,
-          options:{
-            gestureHandling: 'greedy',
-            draggable: !("ontouchend" in document)
-          }
-        });
+        if(navigator.userAgent.search("mobile")>0 ){
+          var map = new google.maps.Map(document.getElementById('map'), {
+            center: new google.maps.LatLng(-23.589115,-48.048801),
+            zoom: 10,
+            styles: styleArray,
+            disableDefaultUI: true,
+            scrollwheel: false,
+            options:{
+              gestureHandling: 'greedy',
+              draggable: !("ontouchend" in document)
+            }
+          });
+        }
+        else{
+          var map = new google.maps.Map(document.getElementById('map'), {
+            center: new google.maps.LatLng(-23.589115,-48.048801),
+            zoom: 14,
+            styles: styleArray,
+            disableDefaultUI: true,
+            scrollwheel: false,
+            options:{
+              gestureHandling: 'greedy',
+              draggable: !("ontouchend" in document)
+            }
+          });
+        }   
 
         @if(isset($cooperativas))
           @foreach($cooperativas as $marker)
