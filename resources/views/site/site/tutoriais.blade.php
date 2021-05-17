@@ -24,7 +24,7 @@
           <div class="content">
             <p class="txt4">{{$tuto->titulo}}</p>
             <p class="txt5">{{$tuto->subtitulo}}</p>
-            <p class="txt2">{{Str::limit($tuto->texto,148)}}</p>
+            <p class="txt2">{{Str::limit($tuto->texto,120)}}</p>
           </div>
           <div class="footer">
             <p><a class="waves-effect waves-light btn-news" href="/tutorial/{{$tuto->id_tutorial}}">Ler Mais</a><a id="heart"></a></p>
