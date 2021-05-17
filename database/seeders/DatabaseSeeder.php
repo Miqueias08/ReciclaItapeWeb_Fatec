@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             "titulo"=>"Como Reciclar Papel",
             "subtitulo"=>"A reciclagem do papel é....",
             "imagem"=>"teste.jpg",
-            "texto"=>rand(0, 3500),
+            "texto"=>Str::random(9000),
             "video"=>"https://www.youtube.com/embed/fjt5gWCx120",
         ]);
 
