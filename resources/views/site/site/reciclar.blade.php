@@ -43,7 +43,6 @@
             options:{
                scrollwheel: false,
               draggable:drgflag,
-              mapTypeId: google.maps.MapTypeId.ROADMAP,
             }
           });
         }
