@@ -41,10 +41,10 @@
             disableDefaultUI: true,
             scrollwheel: false,
             options:{
-              gestureHandling: 'greedy',
-              draggable: !("ontouchend" in document)
+             
             }
           });
+          map.setOptions({ 'draggable': false });
         }
         else{
           var map = new google.maps.Map(document.getElementById('map'), {
