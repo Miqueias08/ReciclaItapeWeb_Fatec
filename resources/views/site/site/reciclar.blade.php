@@ -41,10 +41,11 @@
             disableDefaultUI: true,
             scrollwheel: false,
             options:{
-             
+               scrollwheel: false,
+              draggable:drgflag,
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
             }
           });
-          map.setOptions({ 'draggable': false });
         }
         else{
           var map = new google.maps.Map(document.getElementById('map'), {
