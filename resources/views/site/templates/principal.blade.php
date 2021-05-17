@@ -17,7 +17,7 @@
   <nav class="navbar navbar-expand-lg py-4">
       <div class="container">
         <a href="/" class="navbar-brand h1 mb-0">{{ config('app.name') }}</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
+        <button class="navbar-toggler" type="button" id="fechar-navbar" data-toggle="collapse" data-target="#navbarSite">
             <i class="fas fa-align-justify"></i>
         </button>
 
@@ -116,6 +116,16 @@
         $(".fa-facebook-square").css("color","black");
       }
     );
+  </script>
+  <script type="text/javascript">
+    $("#fechar-navbar").click(function(){
+      var toggle = $(".navbarSite").is(":visible");
+      alert(toggle);
+      if (toggle) {
+          $(".navbar-collapse").collapse('hide');
+      }
+      /*navbarSite*/
+    });
   </script>
   @stack('scriptsFooter')
 </body>
