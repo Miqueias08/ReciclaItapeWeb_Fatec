@@ -33,7 +33,7 @@
         }
       ];
       function initMap() {
-        if(navigator.userAgent.search("mobile")>0 ){
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
           var map = new google.maps.Map(document.getElementById('map'), {
             center: new google.maps.LatLng(-23.589115,-48.048801),
             zoom: 5,
