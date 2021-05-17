@@ -38,9 +38,11 @@
             center: new google.maps.LatLng(-23.589115,-48.048801),
             zoom: 12,
             styles: styleArray,
+            disableDefaultUI: true,
+            scrollwheel: false,
             options:{
-               draggable: isDraggable,
-                scrollwheel: false
+              gestureHandling: 'greedy',
+              draggable: !("ontouchend" in document)
             }
           });
         }
