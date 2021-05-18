@@ -26,4 +26,7 @@ class cooperativas extends Authenticatable
         'descricao',
         'status'
     ];
+    protected $hidden = [
+        'senha'
+    ];
 }
