@@ -16,7 +16,6 @@ class cooperativas extends Authenticatable
         'id_cooperativa',
         'razao_social',
         'email',
-        'senha',
         'telefone',
         'tipo_documento',
         'cnpj',

@@ -8,8 +8,22 @@ use App\Http\Controllers\Site\Usuario\UsuarioController;
 use App\Http\Controllers\Site\Usuario\LoginUsuarioController;
 use App\Http\Controllers\Site\Cooperativas\LoginCooperativa;
 use App\Http\Controllers\Site\Cooperativas\CooperativaController;
+/*API*/
+use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\ApiController;
 
 Route::namespace("Site")->group(function(){
+	/*API*/
+	Route::get('/api/cooperativas', [ApiController::class, 'cooperativas']);
+	Route::post('/api/login', [LoginController::class, 'login']);
+
+
+
+
+
+
+
+
 	Route::get('/', [SiteController::class, 'index']);
 	Route::get('cooperativas', [SiteController::class, 'cooperativas']);
 	Route::get('obter/pontos', [SiteController::class, 'obterPontos']);
