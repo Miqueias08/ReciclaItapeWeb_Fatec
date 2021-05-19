@@ -17,7 +17,7 @@ class LoginController extends Controller
         	$senhaB = $senhaBD->senha;
             if(Hash::check($senha,$senhaB)){
             	$id = usuarios::where('email',$email)->select('id_usuario')->first();
-                $user = usuarios::find($id->id_usuario);
+                $user = usuarios::find($id->id_usuario)->except("senha");
                 return json_encode(["status"=>"ok","dados"=>$user]);
             }
             else{
