@@ -21,11 +21,11 @@ class LoginController extends Controller
                 return json_encode(["status"=>"ok","dados"=>$user]);
             }
             else{
-                return json_encode(["status"=>"erro","dados"=>"Usuário ou senha não encontrado!"]);   
+                return json_encode(["status"=>"erro","mensagem"=>"Usuário ou senha não encontrado!"]);   
             }  
         } 
         else{
-			return json_encode(["status"=>"erro","dados"=>"Falha no Login!"]);
+			return json_encode(["status"=>"erro","mensagem"=>"Falha no Login!"]);
         }
     }
 }
