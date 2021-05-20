@@ -21,7 +21,7 @@ class LoginController extends Controller
             	$id = usuarios::where('email',$email)->select('id_usuario')->first();
                 $user = usuarios::find($id->id_usuario);
                 $saldo = entregas_usuarios::where("usuario_id","=",$id)->select(DB::raw('COALESCE(SUM(peso),0) as total_entrega'))->first();
-                return json_encode(["status"=>"ok","dados"=>$user,"saldo_entrega"=>$saldo[0]]);
+                return json_encode(["status"=>"ok","dados"=>$user,"saldo_entrega"=>$saldo->total_entrega]);
             }
             else{
                 return json_encode(["status"=>"erro","mensagem"=>"Usuário ou senha não encontrado!"]);   
