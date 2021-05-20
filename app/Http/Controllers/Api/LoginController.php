@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\usuarios;
 use App\Models\entregas_usuarios;
 use Hash;
+use DB;
 
 class LoginController extends Controller
 {
