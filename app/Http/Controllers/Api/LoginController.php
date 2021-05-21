@@ -20,7 +20,7 @@ class LoginController extends Controller
             if(Hash::check($senha,$senhaB)){
             	$id = usuarios::where('email',$email)->select('id_usuario')->first();
                 $user = usuarios::find($id->id_usuario);
-                $saldo = entregas_usuarios::where("usuario_id","=",$id)->select(DB::raw('COALESCE(SUM(peso),0) as total_entrega'))->first();
+                $saldo = DB::table("entregas_usuarios")->where("usuario_id","=",$id)->select(DB::raw('COALESCE(SUM(peso),0) as total_entrega'))->first();
                 return json_encode(["status"=>"ok","dados"=>$user,"saldo_entrega"=>$saldo]);
             }
             else{
