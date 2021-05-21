@@ -21,8 +21,10 @@ class ApiController extends Controller
     }
     public function ranking(){
     	$ranking = entregas_usuarios::join("usuarios","entregas_usuarios.usuario_id","=","usuarios.id_usuario")->select("usuarios.nome as usuario",DB::raw('COALESCE(SUM(peso),0) as quantidade_entregue'))->groupby("id_usuario")->orderby("quantidade_entregue","desc")->get();
+    	$p=1;
     	for($i=0;$i<count($ranking);$i++){
-    		$ranking[$i]["posicao"] = 0;
+    		$ranking[$i]["posicao"] = $p;
+    		$p=$p+1;
     	}
     	return json_encode($ranking);
     }
