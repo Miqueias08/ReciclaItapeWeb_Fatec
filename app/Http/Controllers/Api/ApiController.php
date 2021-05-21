@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\cooperativas;
 use App\Models\entregas_usuarios;
 use DB;
+use App\Models\tutoriais;
 
 class ApiController extends Controller
 {
@@ -27,5 +28,8 @@ class ApiController extends Controller
     		$p=$p+1;
     	}
     	return json_encode($ranking);
+    }
+    public function tutoriais(){
+        return json_encode(tutoriais::all());
     }
 }

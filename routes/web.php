@@ -18,6 +18,7 @@ Route::namespace("Site")->group(function(){
 	Route::get('/api/cooperativas', [ApiController::class, 'cooperativas']);
 	Route::get('/api/historico/{idUser}', [ApiController::class, 'historico']);
 	Route::get('/api/ranking', [ApiController::class, 'ranking']);
+	Route::get('/api/tutoriais', [ApiController::class, 'tutoriais']);
 
 
 
