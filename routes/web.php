@@ -14,9 +14,9 @@ use App\Http\Controllers\Api\ApiController;
 
 Route::namespace("Site")->group(function(){
 	/*API*/
-	Route::get('/api/cooperativas', [ApiController::class, 'cooperativas']);
 	Route::post('/api/login', [LoginController::class, 'login']);
-
+	Route::get('/api/cooperativas', [ApiController::class, 'cooperativas']);
+	Route::get('/api/historico/{idUser}', [ApiController::class, 'historico']);
 
 
 
