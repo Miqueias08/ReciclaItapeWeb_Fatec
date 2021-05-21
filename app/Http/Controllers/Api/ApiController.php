@@ -15,6 +15,8 @@ class ApiController extends Controller
     	return json_encode($cooperativas);
     }
     public function historico($idUsuario){
+    	$historico = entregas_usuarios::where("usuario_id","=",$idUsuario)->join("cooperativas","entregas_usuarios.id_cooperativa","cooperativas.id_cooperativa")->select("entregas_usuarios.id as 'id'")->get();
+
     	$historico = entregas_usuarios::where("usuario_id","=",$idUsuario)->join("cooperativas","entregas_usuarios.id_cooperativa","cooperativas.id_cooperativa")->select("entregas_usuarios.*","cooperativas.razao_social")->get();
     	return json_encode($historico);
     }
