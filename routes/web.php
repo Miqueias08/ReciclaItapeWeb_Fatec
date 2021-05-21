@@ -17,6 +17,7 @@ Route::namespace("Site")->group(function(){
 	Route::post('/api/login', [LoginController::class, 'login']);
 	Route::get('/api/cooperativas', [ApiController::class, 'cooperativas']);
 	Route::get('/api/historico/{idUser}', [ApiController::class, 'historico']);
+	Route::get('/api/ranking', [ApiController::class, 'ranking']);
 
 
 
