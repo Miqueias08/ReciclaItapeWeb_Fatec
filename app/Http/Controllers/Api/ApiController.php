@@ -39,7 +39,7 @@ class ApiController extends Controller
     	$validator = Validator::make($request->all(), [
             'nome'=>'required|max:60',
       
-            'email'=>'required|max:90',
+            'email'=>'email|required|max:90',
 
             'senha'=>'required|min:8|max:255',
 
