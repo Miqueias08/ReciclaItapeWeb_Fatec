@@ -32,4 +32,7 @@ class ApiController extends Controller
     public function tutoriais(){
         return json_encode(tutoriais::all());
     }
+    public function cadastro_usuario(Request $request){
+    	return json_encode(["dados"=>$request->all()]);
+    }
 }
