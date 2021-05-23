@@ -52,7 +52,7 @@ class ApiController extends Controller
 	    		"email"=>$request->input("email"),
 	    		"senha"=>Hash::make($request->input("senha")),
 	    	];
-	    	return json_encode(["dados"=>$dados]);
+	    	return json_encode(["dados"=>$usuario]);
         }
     }
 }
