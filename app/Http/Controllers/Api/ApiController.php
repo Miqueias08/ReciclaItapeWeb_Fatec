@@ -9,6 +9,7 @@ use App\Models\entregas_usuarios;
 use DB;
 use App\Models\tutoriais;
 use Illuminate\Support\Facades\Validator;
+use App\Models\usuarios;
 use Hash;
 
 class ApiController extends Controller
@@ -52,7 +53,12 @@ class ApiController extends Controller
 	    		"email"=>$request->input("email"),
 	    		"senha"=>Hash::make($request->input("senha")),
 	    	];
-	    	return json_encode(["dados"=>$usuario]);
+	    	try {
+	    		usuario::create($usuario);
+	    		return json_encode(["status"=>"ok","mensagem"=>"Usuário criado com sucesso!"]);
+	    	} catch (\Exception $e) {
+	    		return json_encode(["status"=>"erro","mensagem"=>"Falha ao salvar'!","erro"=>$e->getMessage()]);
+	    	}
         }
     }
 }
