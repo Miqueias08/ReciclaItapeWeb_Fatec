@@ -8,6 +8,8 @@ use App\Models\cooperativas;
 use App\Models\entregas_usuarios;
 use DB;
 use App\Models\tutoriais;
+use Illuminate\Support\Facades\Validator;
+use Hash;
 
 class ApiController extends Controller
 {
@@ -33,6 +35,24 @@ class ApiController extends Controller
         return json_encode(tutoriais::all());
     }
     public function cadastro_usuario(Request $request){
-    	return json_encode(["dados"=>$request->all()]);
+    	$validator = Validator::make($request->all(), [
+            'nome'=>'required|max:60',
+      
+            'email'=>'required|max:90',
+
+            'senha'=>'required|min:8|max:255',
+
+        ]);
+        if ($validator->fails()) {
+        	return json_encode(["status"=>"erro","mensagem"=>"Erro de validação!"]);
+        }
+        else{
+	    	$usuario = [
+	    		"nome"=>$request->input("nome"),
+	    		"email"=>$request->input("email"),
+	    		"senha"=>Hash::make($request->input("senha")),
+	    	];
+	    	return json_encode(["dados"=>$dados]);
+        }
     }
 }
