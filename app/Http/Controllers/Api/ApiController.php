@@ -54,7 +54,7 @@ class ApiController extends Controller
 	    		"senha"=>Hash::make($request->input("senha")),
 	    	];
 	    	try {
-	    		usuario::create($usuario);
+	    		usuarios::create($usuario);
 	    		return json_encode(["status"=>"ok","mensagem"=>"Usuário criado com sucesso!"]);
 	    	} catch (\Exception $e) {
 	    		return json_encode(["status"=>"erro","mensagem"=>"Falha ao salvar'!","erro"=>$e->getMessage()]);
