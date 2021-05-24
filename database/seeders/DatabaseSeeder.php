@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder
         usuarios::insert([
             "nome"=>"Miquéias Fernando",
             "email"=>"miqueiasfernando@gmail.com",
-            "senha"=>Hash::make("123")
+            "senha"=>Hash::make("12345678")
         ]);
 
         entregas_usuarios::insert([
