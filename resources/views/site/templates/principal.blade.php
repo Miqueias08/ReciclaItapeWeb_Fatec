@@ -12,7 +12,7 @@
     <title>{{ config('app.name') }}</title> 
     @stack('scriptsHead')
 </head>
-<body>
+<body style="height: 100vh;">
   @yield("loading")
   <nav class="navbar navbar-expand-lg py-4">
       <div class="container">

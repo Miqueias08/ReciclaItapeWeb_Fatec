@@ -54,6 +54,54 @@ class DatabaseSeeder extends Seeder
             "status"=>1
         ]);
 
+        cooperativas::insert([
+            "razao_social"=>"Cooperativa X",
+            "email"=>"miqueiasfernando1@gmail.com",
+            "senha"=>Hash::make("123"),
+            "telefone"=>"(15)3272-7070",
+            "imagem"=>"teste.jpg",
+            "tipo_documento"=>"PJ",
+            "cnpj"=>"07.962.851/0007-50",
+            "cpf"=>"",
+            "endereco"=>"Rua Alessandro Joaquim da Costa, N°:136, Centro - Itapetininga - SP",
+            "lat"=>-23.617767254050896,
+            "lng"=>-48.060991293599216,
+            "descricao"=>"Cooperita de reciclagem da cidade de Itapetininga",
+            "status"=>1
+        ]);
+
+        cooperativas::insert([
+            "razao_social"=>"Cooperativa Y",
+            "email"=>"miqueiasfernando2@gmail.com",
+            "senha"=>Hash::make("123"),
+            "telefone"=>"(15)3272-7070",
+            "imagem"=>"teste.jpg",
+            "tipo_documento"=>"PJ",
+            "cnpj"=>"07.962.851/0007-50",
+            "cpf"=>"",
+            "endereco"=>"Rua Alessandro Joaquim da Costa, N°:136, Centro - Itapetininga - SP",
+            "lat"=>-23.58821120786324,
+            "lng"=>-48.02549413928775,
+            "descricao"=>"Cooperita de reciclagem da cidade de Itapetininga",
+            "status"=>1
+        ]);
+
+        cooperativas::insert([
+            "razao_social"=>"Cooperativa Z",
+            "email"=>"miqueiasfernando3@gmail.com",
+            "senha"=>Hash::make("123"),
+            "telefone"=>"(15)3272-7070",
+            "imagem"=>"teste.jpg",
+            "tipo_documento"=>"PJ",
+            "cnpj"=>"07.962.851/0007-50",
+            "cpf"=>"",
+            "endereco"=>"Rua Alessandro Joaquim da Costa, N°:136, Centro - Itapetininga - SP",
+            "lat"=>-23.578378450260626,
+            "lng"=>-48.07776502750831,
+            "descricao"=>"Cooperita de reciclagem da cidade de Itapetininga",
+            "status"=>1
+        ]);
+    
         tutoriais::insert([
             "autor"=>"Miqueias Fernando",
             "titulo"=>"Como Reciclar Papel",

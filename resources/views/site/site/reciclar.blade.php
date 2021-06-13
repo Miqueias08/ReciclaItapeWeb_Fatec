@@ -8,13 +8,30 @@
       padding: 0;
     }
   </style>
+  
+  <div id="busca-itens" >
+    <input id="pac-input" class="controls" type="text" placeholder="Busca Cooperativa" style="height:38px;">
+    <button type="button" class="btn btn-success" id="buscar-cooperativas">Buscar</button>
+    <button type="button" id="remover-filtro" class="btn btn-danger" style="display: none;">Remover Filtro</button>
+    <button class="btn btn-success" id="load" style="display:none;" type="button" disabled>
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      Buscando...
+    </button>
+    <div id="resultados">
+      <ul id="dados-resultados">
 
-  <div id="map" style="width:100%;height:754px;">
-    
+      </ul>
+    </div>
+  </div>
+
+  <div id="map" style="width:100%;height:100vh;">
   </div>
 
   @push('scriptsFooter')
     <script>
+      var markers = [];
+      var map;
+
       var customLabel = {
         restaurant: {
           label: 'R'
@@ -34,7 +51,7 @@
       ];
       function initMap() {
         if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-          var map = new google.maps.Map(document.getElementById('map'), {
+          map = new google.maps.Map(document.getElementById('map'), {
             center: new google.maps.LatLng(-23.589115,-48.048801),
             zoom: 12.7,
             styles: styleArray,
@@ -47,7 +64,7 @@
           });
         }
         else{
-          var map = new google.maps.Map(document.getElementById('map'), {
+          map = new google.maps.Map(document.getElementById('map'), {
             center: new google.maps.LatLng(-23.589115,-48.048801),
             zoom: 14,
             styles: styleArray,
@@ -59,8 +76,11 @@
             }
           });
         }   
-
-        @if(isset($cooperativas))
+        pontos(map);
+    
+      }
+      function pontos(map){
+         @if(isset($cooperativas))
           @foreach($cooperativas as $marker)
             var info{{ $marker->id_cooperativa }} = new google.maps.InfoWindow({
               content: 
@@ -83,29 +103,99 @@
                 info{{ $marker->id_cooperativa }}.open(map,marker{{ $marker->id_cooperativa }})
             });
             marker{{ $marker->id_cooperativa }}.setMap(map);
+            markers.push(marker{{ $marker->id_cooperativa }});
           @endforeach
         @endif
       }
 
-      function downloadUrl(url, callback) {
-        var request = window.ActiveXObject ?
-        new ActiveXObject('Microsoft.XMLHTTP') :
-        new XMLHttpRequest;
+      $("body").on("click", ".cooperativa_lista", function(){
+        var id = $(this).attr("data-id");
+        var razao_social = $(this).attr("data-razao");
+        var material = $(this).attr("data-material");
+        var latitude = $(this).attr("data-latitude");
+        var longitude = $(this).attr("data-longitude");
 
-        request.onreadystatechange = function() {
-          if (request.readyState == 4) {
-            request.onreadystatechange = doNothing;
-            callback(request, request.status);
+
+        $("#pac-input").val(razao_social);
+        $("#resultados").hide();
+        $("#remover-filtro").show();
+        $("#buscar-cooperativas").hide();
+        $("#pac-input").prop( "disabled", true );
+        deletar_pontos(razao_social);
+      });
+
+      function deletar_pontos(ponto){
+        for (var i = 0; i < markers.length; i++) {
+          if(markers[i].title!=ponto){
+            markers[i].setMap(null);
           }
-        };
-
-        request.open('GET', url, true);
-        request.send(null);
+        }
+        markers = [];
       }
+      function deletar_todos_pontos(){
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+        markers = [];
+      }
+      $("#remover-filtro").click(function(){
+        deletar_todos_pontos();
+        pontos(map);
+        $("#remover-filtro").hide();
+        $("#buscar-cooperativas").show();
+        $("#pac-input").val("");
+        $("#pac-input").prop( "disabled", false );
+      });
+
     </script>
 
-    <script defer
-    src="https://maps.googleapis.com/maps/api/js?key={{config('app.api_maps')}}&callback=initMap">
+    <script defer src="https://maps.googleapis.com/maps/api/js?key={{config('app.api_maps')}}&callback=initMap"></script>
+    <script type="text/javascript">
+      function cancela_load(){
+        $("#load").hide();
+         $("#buscar-cooperativas").show();
+      }
+      function inicia_load(){
+         $("#load").show();
+         $("#buscar-cooperativas").hide();
+      }
+      $("#buscar-cooperativas").click(function(){
+        if($("#pac-input").val().trim()!=""){
+          $.ajax({
+            url : "/buscar/cooperativa/"+$("#pac-input").val(),
+            type : 'get',
+            beforeSend : function(){
+              inicia_load();
+            }
+          })
+          .done(function(response){
+            cancela_load();
+            var resposta = JSON.parse(response);
+            if(resposta.length>0){
+              var html="";
+              $.each(resposta, function(i, item) {
+                html = html+"<li class='cooperativa_lista' data-latitude='"+resposta[i].lat+"' data-longitude='"+resposta[i].lng+"' data-razao='"+resposta[i].razao_social+"' data-material='"+resposta[i].material_aceito+"' data-id='"+resposta[i].id_cooperativa+"'><span><i class='fas fa-map-marker-alt'></i>";
+                html = html + resposta[i].id_cooperativa+"°:";
+                html = html + resposta[i].razao_social+" - ";
+                html = html + resposta[i].endereco+"</span></li>";
+              });
+              $("#dados-resultados").empty();
+              $("#dados-resultados").append(html);
+              $("#resultados").show();
+            }
+        })
+        .fail(function(jqXHR, textStatus, msg){
+            cancela_load();
+        });
+
+      }
+    });
+
+    $("#map").click(function(){
+      $("#resultados").hide();
+    });
+
+  
   </script>
   @endpush
 @endsection

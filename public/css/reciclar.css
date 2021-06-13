@@ -1,3 +1,76 @@
-#map{
-	
+
+.controls{
+  margin-top: 16px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input,#resultados {
+  background-color: #fff;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  text-overflow: ellipsis;
+  width: 400px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+.pac-container {
+  font-family: Roboto;
+}
+
+#type-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+  font-size: 13px;
+  font-weight: 300;
+}
+#resultados{
+  display: none;
+}
+#resultados ul{
+  list-style: none;
+  padding: 0;
+}
+#resultados ul li{
+  cursor: pointer;
+}
+#resultados ul li{
+  padding-top: 5px;
+}
+#resultados ul li i{
+  margin: 5px;
+  padding: 5px;
+}
+#resultados ul li:hover{
+  background-color:#9C9C9C;
+}
+#busca-itens{
+  position: absolute;z-index: 1;width: 100%;
+}
+@media (max-width: 575.98px) {
+  #pac-input{
+    width: 70%;
+  }
+  #busca-itens{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+  }
+  #resultados{
+    position: absolute;
+    top: 130%;
+  }
 }
