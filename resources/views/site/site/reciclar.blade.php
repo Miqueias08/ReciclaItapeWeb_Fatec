@@ -88,6 +88,8 @@
                 +"<h5>Endereço</h5> {{ $marker->endereco }}<br>"
                 +"<h5 style='margin-bottom:10'>O ponto coleta os seguintes tipos de lixo</h5>"
                 +"<span class=\"glyphicon glyphicon-file\"></span><strong> {{$marker->material_aceito}}</strong>"
+                +"<a href='https://maps.google.com/?q={{$marker->lat}},{{$marker->lng}}' target='_blank'><button type='button' class='btn btn-primary'><i class='fas fa-map-marked-alt'></i> Enviar para Google Maps</button></a>"
+                +"<br><br><a href='https://www.waze.com/ul?ll={{$marker->lat}}%2C{{$marker->lng}}&navigate=yes&zoom=17' target='_blank'><button type='button' class='btn btn-primary'><i class='fas fa-map-marked-alt'></i> Enviar para Waze</button></a>"
               });
               var marker{{ $marker->id_cooperativa }} = new 
               google.maps.Marker({
