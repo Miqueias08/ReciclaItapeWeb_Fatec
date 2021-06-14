@@ -115,7 +115,7 @@ class DatabaseSeeder extends Seeder
             "categoria"=>"Papel",
             "id_cooperativa"=>1
         ]);
-
+        /*USUARIOS*/
         usuarios::insert([
             "nome"=>"Miquéias Fernando",
             "email"=>"miqueiasfernando@gmail.com",
@@ -123,9 +123,79 @@ class DatabaseSeeder extends Seeder
         ]);
 
         entregas_usuarios::insert([
-            "peso"=>20,
+            "peso"=>8310,
             "tipo_material"=>"papel",
             "usuario_id"=>1,
+            "id_cooperativa"=>1
+        ]);
+
+        usuarios::insert([
+            "nome"=>"Alex Mariano",
+            "email"=>"alexmariano@gmail.com",
+            "senha"=>Hash::make("12345678")
+        ]);
+         entregas_usuarios::insert([
+            "peso"=>2450,
+            "tipo_material"=>"plastico",
+            "usuario_id"=>2,
+            "id_cooperativa"=>1
+        ]);
+
+        usuarios::insert([
+            "nome"=>"Gilson Willian",
+            "email"=>"gilson@gmail.com",
+            "senha"=>Hash::make("12345678")
+        ]);
+        entregas_usuarios::insert([
+            "peso"=>2245,
+            "tipo_material"=>"vidro",
+            "usuario_id"=>3,
+            "id_cooperativa"=>1
+        ]);
+         usuarios::insert([
+            "nome"=>"Jade Calado Rolim",
+            "email"=>"jade@gmail.com",
+            "senha"=>Hash::make("12345678")
+        ]);
+         entregas_usuarios::insert([
+            "peso"=>1500,
+            "tipo_material"=>"papel",
+            "usuario_id"=>4,
+            "id_cooperativa"=>1
+        ]);
+        usuarios::insert([
+            "nome"=>"Jadir Frota Varejão",
+            "email"=>"jadir@gmail.com",
+            "senha"=>Hash::make("12345678")
+        ]);
+        entregas_usuarios::insert([
+            "peso"=>1850,
+            "tipo_material"=>"metal",
+            "usuario_id"=>5,
+            "id_cooperativa"=>1
+        ]);
+
+        usuarios::insert([
+            "nome"=>"Doriana Vilas Boas Canejo",
+            "email"=>"doriana@gmail.com",
+            "senha"=>Hash::make("12345678")
+        ]);
+        entregas_usuarios::insert([
+            "peso"=>2300,
+            "tipo_material"=>"metal",
+            "usuario_id"=>6,
+            "id_cooperativa"=>1
+        ]);
+
+        usuarios::insert([
+            "nome"=>"Cristal Alvim Foquiço",
+            "email"=>"cristal@gmail.com",
+            "senha"=>Hash::make("12345678")
+        ]);
+        entregas_usuarios::insert([
+            "peso"=>1320,
+            "tipo_material"=>"metal",
+            "usuario_id"=>7,
             "id_cooperativa"=>1
         ]);
     }

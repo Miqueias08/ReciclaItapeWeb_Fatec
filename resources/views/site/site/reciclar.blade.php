@@ -79,7 +79,6 @@
         pontos(map);
       }
       function pontos(map){
-        console.log(markers);
          @if(isset($cooperativas))
           @foreach($cooperativas as $marker)
             var info{{ $marker->id_cooperativa }} = new google.maps.InfoWindow({

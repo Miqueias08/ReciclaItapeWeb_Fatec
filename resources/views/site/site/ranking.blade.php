@@ -26,7 +26,7 @@
           <tr>
             <th scope="row">{{$k}}</th>
             <td>{{$rank->nome}}</td>
-            <td>{{number_format($rank->total_entrega,2,",",".")}}</td>
+            <td>{{number_format($rank->total_entrega,2,",",".")}} KG</td>
           </tr>
           @php
             $k=$k+1;

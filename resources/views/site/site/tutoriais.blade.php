@@ -28,7 +28,7 @@
           </div>
           <div class="footer">
             <p><a class="waves-effect waves-light btn-news" href="/tutorial/{{$tuto->id_tutorial}}">Ler Mais</a><a id="heart"></a></p>
-            <p class="txt3"><i class="far fa-clock"></i>{{date('d-m-Y H:i', strtotime($tuto->dataHora))}}</p>
+            <p class="txt3"><i class="far fa-clock"></i>{{date('d/m/Y H:i', strtotime($tuto->dataHora))}}</p>
           </div>
         </div>
 
@@ -39,11 +39,19 @@
 
     </div>
     
-
+  </div>
  
   
   @push('scriptsFooter')
   
   @endpush
+@endsection
+@section('rodape')
+  @include("site.templates.rodape")
+  <style type="text/css">
+    #dados{
+      min-height: 100%;height: auto;display: block;position: inherit;
+    }
+  </style>
 @endsection
     
