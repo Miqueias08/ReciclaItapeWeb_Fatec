@@ -11,9 +11,9 @@
   
   <div id="busca-itens" >
     <input id="pac-input" class="controls" type="text" placeholder="Busca Cooperativa" style="height:38px;">
-    <button type="button" class="btn btn-success" id="buscar-cooperativas">Buscar</button>
-    <button type="button" id="remover-filtro" class="btn btn-danger" style="display: none;">Remover Filtro</button>
-    <button class="btn btn-success" id="load" style="display:none;" type="button" disabled>
+    <button type="button" class="btn btn-success" id="buscar-cooperativas" style="margin:5px;cursor: pointer;position: relative;top: -0.2px;">Buscar</button>
+    <button type="button" id="remover-filtro" class="btn btn-danger" style="display: none;margin: 5px;">Remover</button>
+    <button class="btn btn-success" id="load" style="display:none;" type="button" disabled style="margin:5px;">
       <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
       Buscando...
     </button>
@@ -77,9 +77,9 @@
           });
         }   
         pontos(map);
-    
       }
       function pontos(map){
+        console.log(markers);
          @if(isset($cooperativas))
           @foreach($cooperativas as $marker)
             var info{{ $marker->id_cooperativa }} = new google.maps.InfoWindow({
@@ -108,6 +108,7 @@
         @endif
       }
 
+      /*AO Selecionar o Filtro*/
       $("body").on("click", ".cooperativa_lista", function(){
         var id = $(this).attr("data-id");
         var razao_social = $(this).attr("data-razao");
@@ -121,22 +122,20 @@
         $("#remover-filtro").show();
         $("#buscar-cooperativas").hide();
         $("#pac-input").prop( "disabled", true );
-        deletar_pontos(razao_social);
+        deletar_pontos_especificos(razao_social);
       });
 
-      function deletar_pontos(ponto){
+      function deletar_pontos_especificos(ponto){
         for (var i = 0; i < markers.length; i++) {
           if(markers[i].title!=ponto){
             markers[i].setMap(null);
           }
         }
-        markers = [];
       }
       function deletar_todos_pontos(){
         for (var i = 0; i < markers.length; i++) {
             markers[i].setMap(null);
         }
-        markers = [];
       }
       $("#remover-filtro").click(function(){
         deletar_todos_pontos();
@@ -146,7 +145,6 @@
         $("#pac-input").val("");
         $("#pac-input").prop( "disabled", false );
       });
-
     </script>
 
     <script defer src="https://maps.googleapis.com/maps/api/js?key={{config('app.api_maps')}}&callback=initMap"></script>

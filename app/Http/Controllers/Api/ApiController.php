@@ -62,7 +62,7 @@ class ApiController extends Controller
         }
     }
     public function busca_cooperativa($cooperativa){
-        $cooperativas = DB::table("cooperativas")->join("materiais_cooperativas","cooperativas.id_cooperativa","=","materiais_cooperativas.id_cooperativa")->select("cooperativas.*",DB::raw("group_concat(materiais_cooperativas.categoria) as 'material_aceito'"))->where('razao_social', 'like', '%'.$cooperativa."%")->groupby("id_cooperativa")->get();
+        $cooperativas = DB::table("cooperativas")->leftjoin("materiais_cooperativas","cooperativas.id_cooperativa","=","materiais_cooperativas.id_cooperativa")->select("cooperativas.*",DB::raw("group_concat(materiais_cooperativas.categoria) as 'material_aceito'"))->where('razao_social', 'like', '%'.$cooperativa."%")->groupby("id_cooperativa")->get();
         return json_encode($cooperativas);
     }
 }
