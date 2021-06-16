@@ -44,38 +44,43 @@
       </form>
    </div>
    <h1>Histórico de Entregas</h1>
-   <table class="table" style="text-align: center;">
-      <thead class="thead-dark">
-         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Peso(KG)</th>
-            <th scope="col">Tipo de Material</th>
-            <th scope="col">Usuário (Nome)</th>
-            <th scope="col">Usuário (Email)</th>
-            <th scope="col">Excluir</th>
-         </tr>
-      </thead>
-      <tbody>
-            @forelse($entregas as $ent)
-         <tr>
-            <th scope="row">{{$ent->id_entrega_usuario}}</th>
-            <td>{{number_format($ent->peso,2,",",".")}}</td>
-            <td>{{$ent->tipo_material}}</td>
-            <td>{{$ent->nome}}</td>
-            <td>{{$ent->email}}</td>
-            <td>
-               <a href="/cooperativa/excluir/entrega/{{$ent->id_entrega_usuario}}" id="excluir">
-                  <p data-placement="Excluir" title="Excluir"><button class="btn btn-danger btn-xs" data-title="Excluir"><span class="glyphicon glyphicon-pencil">Excluir</span></button></p>
-               </a>
-            </td>
-         </tr>
-         @empty
-         <tr>
-            <th colspan="4">Nenhum Material Entregue!</th>
-         </tr>
-         @endforelse
-      </tbody>
-   </table>
+   <div class="container">
+   <div style="width:100%;overflow-x: auto;">
+      <table class="table table-hover table-striped 
+          table-condensed tasks-table" style="text-align: center;width: auto;">
+         <thead class="thead-dark">
+            <tr>
+               <th scope="col">#</th>
+               <th scope="col">Peso(KG)</th>
+               <th scope="col">Tipo de Material</th>
+               <th scope="col">Usuário (Nome)</th>
+               <th scope="col">Usuário (Email)</th>
+               <th scope="col">Excluir</th>
+            </tr>
+         </thead>
+         <tbody>
+               @forelse($entregas as $ent)
+            <tr>
+               <th scope="row">{{$ent->id_entrega_usuario}}</th>
+               <td>{{number_format($ent->peso,2,",",".")}}</td>
+               <td>{{$ent->tipo_material}}</td>
+               <td>{{$ent->nome}}</td>
+               <td>{{$ent->email}}</td>
+               <td>
+                  <a href="/cooperativa/excluir/entrega/{{$ent->id_entrega_usuario}}" id="excluir">
+                     <p data-placement="Excluir" title="Excluir"><button class="btn btn-danger btn-xs" data-title="Excluir"><span class="glyphicon glyphicon-pencil">Excluir</span></button></p>
+                  </a>
+               </td>
+            </tr>
+            @empty
+            <tr>
+               <th colspan="4">Nenhum Material Entregue!</th>
+            </tr>
+            @endforelse
+         </tbody>
+      </table>
+      
+   </div>
 </div>
 @push('scriptsFooter')
 <script src="/js/jquery-confirm.min.js"></script>
