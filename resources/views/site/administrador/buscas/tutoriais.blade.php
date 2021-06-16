@@ -3,7 +3,7 @@
 
 @endpush
 @section("conteudo-admin")
-<h1 class="page-title">Listagem das Tutorias</h1>
+<h1 class="page-title">Listagem dos Tutorias</h1>
 
 <div class="container-fluid listar-pontos" style="display: grid;">
     <table id="mytable" class="table table-bordred table-striped" style="text-align: center;width: auto;overflow-x: auto;">
