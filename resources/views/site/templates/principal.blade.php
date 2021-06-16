@@ -17,7 +17,7 @@
   <nav class="navbar navbar-expand-lg py-4">
       <div class="container">
         <a href="/" class="navbar-brand h1 mb-0">{{ config('app.name') }}</a>
-        <button class="navbar-toggler" type="button" id="fechar-navbar" data-toggle="collapse" data-target="#navbarSite">
+        <button class="navbar-toggler" type="button" id="fechar-navbar" data-toggle="collapse" data-target=".navbar-collapse.show">
             <i class="fas fa-align-justify"></i>
         </button>
 
@@ -120,9 +120,11 @@
   <script type="text/javascript">
     $("#fechar-navbar").click(function(){
       var toggle = $(".navbarSite").is(":visible");
-      alert(toggle);
-      if (toggle) {
+      if (toggle==true) {
           $(".navbar-collapse").collapse('hide');
+      }
+      else{
+        $(".navbar-collapse").collapse('show');
       }
       /*navbarSite*/
     });
