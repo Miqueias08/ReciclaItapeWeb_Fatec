@@ -13,9 +13,6 @@
       <p>{{ date('d/m/Y', strtotime($tutorial->dataHora ))}} às {{ date('h:i', strtotime($tutorial->dataHora ))}}
       </p>
    </div>
-   <div class="dados-autor">
-      
-   </div>
    <div class="container-fluid col-md-12 row contentText">
       <div class="container boxtext">
          <div class="iframe col-md-12">
@@ -27,6 +24,10 @@
             </div>
             <!-- <img src="{{URL::asset('/uploads/info/'.$tutorial->imagem)}}"> -->
             @endif
+         </div>
+         <div class="dados-autor">
+            <img src="/img/avatar.svg">
+            <p> {{$tutorial->autor}}</p>
          </div>
          <div class="textTuto col-md-12 col-md-offset-2">
             {!!$tutorial->texto!!}
