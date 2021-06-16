@@ -5,7 +5,7 @@
 @endpush
 <div class="container" id="box-geral">
 <img id="cad-bg" src="/img/login-registro.jpg" alt="Background">
-<div class="row" style="justify-content:center; width: 1050px;">
+<div class="row" style="justify-content:center; width: 100%;margin: 0;">
 
   <div class="cadastro col-md-5 col-md-offset-2">
     <p class="lead">Área Restrita</p>
