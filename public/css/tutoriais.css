@@ -191,19 +191,12 @@ h1,p{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media (max-width: 767.98px) {
+    .cardcontainer{
+        width: auto;
+        height: 600px;
+    }
+}
 
 
 
