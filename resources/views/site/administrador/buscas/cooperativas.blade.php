@@ -6,7 +6,8 @@
 <h1 class="page-title">Listagem das Cooperativas</h1>
 
 <div class="container-fluid listar-pontos">
-    <table id="mytable" class="table table-bordred table-striped" style="text-align: center;width: auto;overflow-x: auto;">
+    <table id="mytable" class="table table-hover table-striped 
+          table-condensed tasks-table" style="text-align: center;width: auto;overflow-x: auto;">
         <thead>
             <th>id_cooperativa</th>
             <th>razao_social</th>
@@ -30,7 +31,7 @@
                 <td>{{$coope->tipo_documento}}</td>
                 <td>{{$coope->cnpj}}</td>
                 <td>{{$coope->cpf}}</td>
-                <td>{{$coope->endereco}}</td>
+                <td>{{ Str::limit($coope->endereco,10,'...')}}</td>
                 <td>{{$coope->lat}}</td>
                 <td>{{$coope->lng}}</td>
                 <td>{{$coope->descrição}}</td>
