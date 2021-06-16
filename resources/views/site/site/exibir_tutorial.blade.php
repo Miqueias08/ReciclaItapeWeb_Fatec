@@ -13,14 +13,14 @@
       <p>{{ date('d/m/Y', strtotime($tutorial->dataHora ))}} às {{ date('h:i', strtotime($tutorial->dataHora ))}}
       </p>
    </div>
-   <div class="container-fluid col-md-12 row contentText">
+   <div class="container-fluid col-md-12 row contentText" style="margin:0;padding: 0;">
       <div class="container boxtext">
          <div class="iframe col-md-12">
             @if(!$tutorial->video == '')
             <iframe src="{{$tutorial->video}}" frameborder="0" allowfullscreen>
             </iframe>
             @else
-            <div class="imgTuto col-md-12 col-xs-12 col-sm-12" style="background-image: url('{{URL::asset('/img-tutorial/'.$tutorial->imagem)}}');height: 420px;">
+            <div class="imgTuto col-md-12 col-xs-12 col-sm-12" style="background-image: url('{{URL::asset('/img-tutorial/'.$tutorial->imagem)}}');">
             </div>
             <!-- <img src="{{URL::asset('/uploads/info/'.$tutorial->imagem)}}"> -->
             @endif

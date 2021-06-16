@@ -196,6 +196,15 @@ h1,p{
         width: auto;
         height: 600px;
     }
+    .TutoriaisMain{
+        margin: 0;
+    }
+    .imgTuto{
+        height: 290px;
+    }
+    .contentText{
+        margin: 0;
+    }
 }
 
 
