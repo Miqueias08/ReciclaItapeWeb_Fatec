@@ -197,7 +197,13 @@ input[type]:focus{
 }
 @media (max-width: 575.98px) {
   #box-geral{
-    display: block;
+    display: inline-block;
+  }
+
+  #dados {
+      position: absolute;
+      height: auto;
+      margin: 0;
   }
 }
 .esqueci-senha,.esqueci-senha:focus{
