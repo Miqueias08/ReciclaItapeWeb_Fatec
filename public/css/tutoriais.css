@@ -190,7 +190,9 @@ h1,p{
 }
 
 
-
+.noticias{
+        display: inline-flex;
+    }
 @media (max-width: 767.98px) {
     .cardcontainer{
         width: auto;
@@ -204,6 +206,9 @@ h1,p{
     }
     .contentText{
         margin: 0;
+    }
+    .noticias{
+        display: block;
     }
 }
 

@@ -17,12 +17,12 @@
 
       @forelse($tutoriais as $tuto)
 
-        <div class="cardcontainer">
+        <div class="cardcontainer" style="margin:10px;">
           <div class="photo"> <img src="/img-tutorial/{{$tuto->imagem}}">
             <div class="photos">Reciclagem</div>
           </div>
           <div class="content">
-            <p class="txt4">{{$tuto->titulo}}</p>
+            <p class="txt4" style="line-break: anywhere;">{{Str::limit($tuto->titulo,41)}}</p>
             <p class="txt5">{{$tuto->subtitulo}}</p>
             <p class="txt2">{{Str::limit($tuto->texto,75)}}</p>
           </div>
