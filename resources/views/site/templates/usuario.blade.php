@@ -6,7 +6,7 @@
     @php
       $entrega = \App\Models\entregas_usuarios::where("usuario_id","=",Auth::guard('usuario')->user()->id_usuario)->select(DB::raw('COALESCE(SUM(peso),0) as total_entrega'))->first();
     @endphp
-    <div class="row">
+    <div class="row" style="height:100%;">
       <div class="col-md-2 usuario-box navbar-user">
         <div class="pontuacao-user">
           <ul>
