@@ -7,7 +7,7 @@
         <div class="alert alert-danger">
           <ul>
             @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
+            <li>{!! $error !!}</li>
             @endforeach
           </ul>
         </div>
@@ -50,7 +50,7 @@
         <input type="password" id="senha"  @if(isset($dados)) style="display: none;" @endif class="form-control" name="senha" placeholder="Senha">
 
          <label for="exampleFormControlInput1">Telefone</label>
-        <input type="tel" class="form-control" name="telefone" placeholder="Telefone" 
+        <input type="tel" id="telefone" class="form-control" name="telefone" placeholder="Telefone" 
         @if(isset($dados)) 
         value="{{$dados->telefone}}"
         @else
@@ -107,20 +107,20 @@
         @endif>
 
         <label for="exampleFormControlInput1">Latitude</label>
-        <input type="number" class="form-control" name="lat" placeholder="Latitude" 
+        <input type="number" id="latitude" class="form-control" name="lat" placeholder="Latitude" 
         @if(isset($dados)) 
         value="{{$dados->lat}}"
         @else
         value="{{ old('lat') }}"
-        @endif  step="0.01" min="-1000000000000000000000" max="1000000000000000000000">
+        @endif  step="0.01" min="-1000000000000000000000" max="1000000000000000000000" maxlength="10">
 
         <label for="exampleFormControlInput1">Longitude</label>
-        <input type="number" class="form-control" name="lng" placeholder="Longitude" 
+        <input type="number" id="longitude" class="form-control" name="lng" placeholder="Longitude" 
         @if(isset($dados)) 
         value="{{$dados->lng}}"
         @else
         value="{{ old('lng') }}"
-        @endif step="0.01" min="-1000000000000000000000" max="1000000000000000000000">
+        @endif step="0.01" min="-1000000000000000000000" max="1000000000000000000000" maxlength="10">
 
         <label for="exampleFormControlInput1">Descrição</label>
         <input type="text" class="form-control" name="descricao" placeholder="Descrição" 
@@ -132,7 +132,7 @@
 
          <div class="form-group">
             <label for="exampleFormControlSelect1">Status</label>
-            <select class="form-control" name="status" id="exampleFormControlSelect1">
+            <select class="form-control" name="status" id="status">
               <option value="">Selecione o status</option>
               <option value="1" @if(isset($dados)) @if($dados->status == 1) selected @endif @endif>Ativo</option>
               <option value="2" @if(isset($dados)) @if($dados->status == 2) selected @endif @endif>Desativado</option>
@@ -163,8 +163,32 @@
 <script type="text/javascript">
     $('#cpf').mask('000.000.000-00');
     $('#cnpj').mask('00.000.000/0000-00');
+    $('#telefone').mask('(00)00000-0000');
 </script>
 <script type="text/javascript" href="/js/jquery.js"></script>
+<script type="text/javascript">
+    $( document ).ready(function() {
+        var tipo_doc = "{{old('tipo_documento')}}";
+        var status = "{{old('status')}}";
+        if(tipo_doc.length>0){
+            if(tipo_doc=="PJ"){
+                $('#tipo-documento option[value="PJ"]').prop("selected",true).trigger("change");
+            }
+            else if(tipo_doc=="PF"){
+                $('#tipo-documento option[value="PF"]').prop("selected",true).trigger("change");
+            }
+        }
+
+        if(status.length>0){
+            if(status==1){
+                $('#status option[value="1"]').prop("selected",true).trigger("change");
+            }
+            else if(status==2){
+                $('#status option[value="2"]').prop("selected",true).trigger("change");
+            }
+        }
+    });
+</script>
 <script type="text/javascript">
     $("#atualizar-img").click(function(){
         if($('#atualizar-img').is(":checked")==true){

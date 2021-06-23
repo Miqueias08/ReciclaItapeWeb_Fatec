@@ -41,9 +41,9 @@ class AdministradorController extends Controller
 
             'endereco'=>'required|max:100',
 
-            'lat'=>'required',
+            'lat'=>'required|numeric',
 
-            'lng'=>'required',
+            'lng'=>'required|numeric',
 
             'descricao'=>'max:150',
 
@@ -65,8 +65,7 @@ class AdministradorController extends Controller
             cooperativas::insert($requestData);
             return redirect()->back()->withSuccess('Cooperativa Cadastrada!');
         } catch (\Exception $e) {
-            return $e->getMessage();
-            return redirect()->back()->withInput()->withErrors('Falha no Cadastro!');
+            return redirect()->back()->withInput()->withErrors('Falha no Cadastro,Verifique os campos e tente novamente!<br>'.$e->getMessage());
         }
     }
     public function admin_sair(){
