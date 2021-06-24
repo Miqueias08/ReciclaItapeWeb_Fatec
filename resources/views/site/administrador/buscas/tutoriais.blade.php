@@ -27,7 +27,7 @@
                 <td><a href="/administrador/atualizar/tutorial/{{$tuto->id_tutorial}}" id="editar"><p data-placement="Atualizar" title="Atualizar"><button class="btn btn-success btn-xs" data-title="Atualizar"><span class="glyphicon glyphicon-pencil">Atualizar</span></button></p></a></td>
 
 
-                <td><a href="/administrador/excluir/cooperativa/{{$tuto->id_tutorial}}" id="excluir"><p data-placement="Excluir" title="Excluir"><button class="btn btn-danger btn-xs" data-title="Excluir"><span class="glyphicon glyphicon-pencil">Excluir</span></button></p></a></td>
+                <td><a href="/administrador/excluir/tutorial/{{$tuto->id_tutorial}}" id="excluir"><p data-placement="Excluir" title="Excluir"><button class="btn btn-danger btn-xs" data-title="Excluir"><span class="glyphicon glyphicon-pencil">Excluir</span></button></p></a></td>
             </tr>
            @empty
            @endforelse
