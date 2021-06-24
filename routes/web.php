@@ -91,6 +91,7 @@ Route::namespace("Site")->group(function(){
 		Route::get('/administrador/material-aceito/excluir/{id}', [AdministradorController::class, 'excluir_material_aceito']);
 		Route::get('/administrador/busca/tutoriais', [AdministradorController::class, 'busca_tutoriais']);
 		Route::get('/administrador/atualizar/tutorial/{id}', [AdministradorController::class, 'atualizar_tutorial']);
+		Route::get('/administrador/excluir/tutorial/{id}', [AdministradorController::class, 'excluir_tutorial']);
 		Route::post('/administrador/atualizar/tutorial/{id}', [AdministradorController::class, 'processa_atualizar_tutorial']);
 	
 

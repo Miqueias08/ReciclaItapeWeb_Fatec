@@ -146,6 +146,10 @@ class AdministradorController extends Controller
         $tutorial = tutoriais::find($id);
         return view("site.administrador.cadastros.tutoriais",["tutorial"=>$tutorial]);
     }
+    public function excluir_tutorial($id){
+        tutoriais::find($id)->delete();
+        return redirect()->back();
+    }
     public function processa_atualizar_tutorial(Request $request,$id){
         if($request->input("atualizar-imagem")=="on"){
              $validated = $request->validate([
